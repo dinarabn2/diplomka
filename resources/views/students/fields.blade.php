@@ -37,18 +37,13 @@
 <!-- Gender Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('gender', 'Жынысы:') !!}
-    {!! Form::text('gender', null, ['class' => 'form-control']) !!}
+    {!! Form::select('gender', $genders, old('name', $student->gender ?? null), ['class' => 'form-control']) !!}
 </div>
 
-<!-- Faculty id Field -->
+<!-- Group id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('faculty_id', 'Факультет:') !!}
-    {!! Form::select('faculty_id', $faculties, old('faculty_id', $student->faculty->id ?? null), ['class' => 'form-control']) !!}
-</div>
-
-<div class="form-group col-sm-6">
-    {!! Form::label('speciality_id', 'Мамандық:') !!}
-    {!! Form::select('speciality_id', $specialities, old('speciality_id', $student->speciality->id ?? null), ['class' => 'form-control']) !!}
+    {!! Form::label('group_id', 'Группа:') !!}
+    {!! Form::select('group_id', $groups, old('group_id', $student->group->id ?? null), ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group col-sm-12">

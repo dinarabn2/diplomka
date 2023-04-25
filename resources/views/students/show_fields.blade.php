@@ -37,17 +37,22 @@
 <!-- Gender Field -->
 <div class="col-sm-12">
     {!! Form::label('gender', 'Жынысы:') !!}
-    <p>{{ $student->gender }}</p>
+    <p>@if ($student->gender && $gender) {{ $gender[$student->gender] }} @else 'Not data' @endif</p>
 </div>
 
 <div class="col-sm-12">
     {!! Form::label('faculty_id', 'Факультет:') !!}
-    <p>{{ $student->faculty->name }}</p>
+    <p>{{ $student->group->faculty->name }}</p>
 </div>
 
 <div class="col-sm-12">
     {!! Form::label('speciality_id', 'Мамандық:') !!}
-    <p>{{ $student->speciality->name }}</p>
+    <p>{{ $student->group->speciality->name }}</p>
+</div>
+
+<div class="col-sm-12">
+    {!! Form::label('tutor_id', 'Куратор:') !!}
+    <p>{{ $student->group->tutor->name }}</p>
 </div>
 
 <div class="col-sm-12">

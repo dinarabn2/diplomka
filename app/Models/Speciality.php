@@ -30,7 +30,8 @@ class Speciality extends Model
 
     public $fillable = [
         'name',
-        'cipher'
+        'cipher',
+        'faculty_id'
     ];
 
     /**
@@ -40,7 +41,8 @@ class Speciality extends Model
      */
     protected $casts = [
         'name' => 'string',
-        'cipher' => 'string'
+        'cipher' => 'string',
+        'faculty_id'
     ];
 
     /**
@@ -50,13 +52,23 @@ class Speciality extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'cipher' => 'required'
+        'cipher' => 'required',
+        'faculty_id'
     ];
+
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class);
+    }
 
     public function students()
     {
         return $this->hasMany(Student::class);
     }
 
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
+    }
     
 }

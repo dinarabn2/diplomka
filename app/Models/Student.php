@@ -43,8 +43,7 @@ class Student extends Model
         'course',
         'education_type',
         'gender',
-        'faculty_id',
-        'speciality_id'
+        'group_id'
     ];
 
     /**
@@ -62,8 +61,7 @@ class Student extends Model
         'course' => 'string',
         'education_type' => 'string',
         'gender' => 'string',
-        'faculty_id' => 'integer',
-        'speciality_id' => 'integer',
+        'group_id' => 'integer',
     ];
 
     /**
@@ -79,8 +77,7 @@ class Student extends Model
         'course' => 'required',
         'education_type' => 'required',
         'gender' => 'required',
-        'faculty_id' => 'required',
-        'speciality_id' => 'required',
+        'group_id' => 'required',
     ];
 
     public function faculty()
@@ -91,5 +88,10 @@ class Student extends Model
     public function speciality()
     {
         return $this->belongsTo(Speciality::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
     }
 }

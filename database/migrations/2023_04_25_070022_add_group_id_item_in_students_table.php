@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFacultyIdItemInStudentsTable extends Migration
+class AddGroupIdItemInStudentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddFacultyIdItemInStudentsTable extends Migration
     public function up()
     {
         Schema::table('students', function (Blueprint $table) {
-            //
-            $table->foreignId('faculty_id')->after('gender')->constrained()->onDelete('cascade');
+            $table->foreignId('group_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -27,9 +26,8 @@ class AddFacultyIdItemInStudentsTable extends Migration
     public function down()
     {
         Schema::table('students', function (Blueprint $table) {
-            //
-            $table->dropForeign('students_faculty_id_foreign');
-            $table->dropColumn('faculty_id');
+            $table->dropForeign('students_group_id_foreign');
+            $table->dropColumn('group_id');
         });
     }
 }

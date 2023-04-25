@@ -6,6 +6,7 @@ use App\Http\Requests\CreateStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Repositories\StudentRepository;
 use App\Repositories\FacultyRepository;
+use App\Repositories\GroupRepository;
 use App\Repositories\SpecialityRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Faculty;
@@ -28,11 +29,25 @@ class StudentController extends AppBaseController
     private $facultyRepository;
     private $specialityRepository;
 
-    public function __construct(StudentRepository $studentRepo, FacultyRepository $facultyRepo, SpecialityRepository $specialityRepo )
+    /**
+     * 
+     * @var GroupRepository
+     */
+    private $groupRepository;
+
+    /**
+     * 
+     * @var array
+     */
+    public $genderSelect = [];
+
+    public function __construct(StudentRepository $studentRepo, FacultyRepository $facultyRepo, SpecialityRepository $specialityRepo, GroupRepository  $groupRepositoryRepo)
     {
         $this->studentRepository = $studentRepo;
         $this->facultyRepository = $facultyRepo;
         $this->specialityRepository = $specialityRepo;
+        $this->groupRepository = $groupRepositoryRepo;
+        $this->genderSelect = ['male' => 'Ұл', 'female' => 'Қыз'];
     }
 
     /**
@@ -48,7 +63,7 @@ class StudentController extends AppBaseController
         $students = Student::orderBy('surname')->get();
 
         return view('students.index')
-            ->with('students', $students);
+            ->with(['students' => $students, 'gender' => $this->genderSelect]);
     }
 
     /**
@@ -60,8 +75,10 @@ class StudentController extends AppBaseController
     {
         $faculties = $this->facultyRepository->makeModel()->pluck('name', 'id');
         $specialities = $this->specialityRepository->makeModel()->pluck('name', 'id');
+        $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
+        $genders = $this->genderSelect;
 
-        return view('students.create', compact('faculties', 'specialities'));
+        return view('students.create', compact('faculties', 'specialities', 'groups', 'genders'));
     }
 
     /**
@@ -90,8 +107,7 @@ class StudentController extends AppBaseController
         $student->course = $request->course;
         $student->education_type = $request->education_type;
         $student->gender = $request->gender;
-        $student->faculty_id = $request->faculty_id;
-        $student->speciality_id = $request->speciality_id;
+        $student->group_id = $request->group_id;
 
         $student->save();
 
@@ -116,7 +132,7 @@ class StudentController extends AppBaseController
             return redirect(route('students.index'));
         }
 
-        return view('students.show')->with('student', $student);
+        return view('students.show')->with(['student' => $student, 'gender' => $this->genderSelect]);
     }
 
     /**
@@ -131,6 +147,8 @@ class StudentController extends AppBaseController
         $student = $this->studentRepository->find($id);
         $faculties = $this->facultyRepository->makeModel()->pluck('name', 'id');
         $specialities = $this->specialityRepository->makeModel()->pluck('name', 'id');
+        $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
+        $genders = $this->genderSelect;
 
         if (empty($student)) {
             Flash::error('Студент табылмады.');
@@ -138,7 +156,14 @@ class StudentController extends AppBaseController
             return redirect(route('students.index'));
         }
 
-        return view('students.edit')->with(['student' => $student, 'faculties' => $faculties, 'specialities' => $specialities]);
+        return view('students.edit')->with(
+            [
+                'student' => $student, 
+                'faculties' => $faculties, 
+                'specialities' => $specialities, 
+                'groups' => $groups,
+                'genders' => $genders
+            ]);
     }
 
     /**

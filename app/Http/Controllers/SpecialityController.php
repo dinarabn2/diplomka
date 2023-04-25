@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateSpecialityRequest;
 use App\Http\Requests\UpdateSpecialityRequest;
 use App\Repositories\SpecialityRepository;
+use App\Repositories\FacultyRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Speciality;
 use Illuminate\Http\Request;
@@ -16,9 +17,16 @@ class SpecialityController extends AppBaseController
     /** @var SpecialityRepository $specialityRepository*/
     private $specialityRepository;
 
-    public function __construct(SpecialityRepository $specialityRepo)
+    /**
+     * 
+     * @var FacultyRepository $facultyRepository
+     */
+    private $facultyRepository;
+
+    public function __construct(SpecialityRepository $specialityRepo, FacultyRepository $facultyRepo)
     {
         $this->specialityRepository = $specialityRepo;
+        $this->facultyRepository = $facultyRepo;
     }
 
     /**
@@ -43,7 +51,9 @@ class SpecialityController extends AppBaseController
      */
     public function create()
     {
-        return view('specialities.create');
+        $faculties = $this->facultyRepository->makeModel()->pluck('name', 'id');
+        return view('specialities.create')
+            ->with('faculties', $faculties);
     }
 
     /**
@@ -94,6 +104,7 @@ class SpecialityController extends AppBaseController
     public function edit($id)
     {
         $speciality = $this->specialityRepository->find($id);
+        $faculties = $this->facultyRepository->makeModel()->pluck('name', 'id');
 
         if (empty($speciality)) {
             Flash::error('Мамандық табылмады');
@@ -101,7 +112,7 @@ class SpecialityController extends AppBaseController
             return redirect(route('specialities.index'));
         }
 
-        return view('specialities.edit')->with('speciality', $speciality);
+        return view('specialities.edit')->with(['speciality' => $speciality, 'faculties' => $faculties]);
     }
 
     /**

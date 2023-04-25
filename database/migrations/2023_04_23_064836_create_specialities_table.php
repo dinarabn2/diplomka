@@ -18,6 +18,7 @@ class CreateSpecialitiesTable extends Migration
             $table->id('id');
             $table->string('name');
             $table->string('cipher');
+            $table->foreignId('faculty_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -53,10 +53,14 @@ class Faculty extends Model
         'cipher' => 'required'
     ];
 
-    public function students()
+    public function specialities()
     {
-        return $this->hasMany(Student::class);
+        return $this->hasMany(Speciality::class);
     }
 
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
+    }
     
 }

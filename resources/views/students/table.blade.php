@@ -27,7 +27,7 @@
                 <td>{{ $student->name }}</td>
                 <td>{{ $student->surname }}</td>
                 <td>{{ $student->birthday }}</td>
-                <td>{{ $student->gender }}</td>
+                <td>@if ($student->gender && $gender) {{ $gender[$student->gender] }} @else 'Not data' @endif</td>
                 <td>{{ $student->course }}</td>
                 <td>{{ $student->education_type }}</td>
                 <td>{{ $student->phone }}</td>

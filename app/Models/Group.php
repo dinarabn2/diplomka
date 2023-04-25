@@ -58,8 +58,23 @@ class Group extends Model
         'speciality_id' => 'required'
     ];
 
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
+
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class);
+    }
+
     public function tutor()
     {
         return $this->belongsTo(Tutor::class);
+    }
+
+    public function speciality()
+    {
+        return $this->belongsTo(Speciality::class);
     }
 }
