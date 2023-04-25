@@ -62,5 +62,5 @@
 
 <div class="col-sm-12">
     {!! Form::label('img', 'Сурет:') !!}
-    <img src="/{{ $student->img ?? null }}" alt="{{$student->title }}" class="img-uploaded" style="display: block; width: 300px;">
+    <img src="{{ asset($student->img) }}" alt="{{$student['title']  ?? null}}" class="img-uploaded" style="display: block; width: 300px;">
 </div>

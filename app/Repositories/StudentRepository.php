@@ -43,4 +43,12 @@ class StudentRepository extends BaseRepository
     {
         return Student::class;
     }
+
+    public function updateStudent($request, $id, $action)
+    {
+        $destinationPath = public_path('/files/img/');
+        $input = $action->handle($request, $destinationPath);
+
+        return $this->update($input, $id);
+    }
 }
