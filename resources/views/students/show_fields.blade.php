@@ -42,5 +42,20 @@
 
 <div class="col-sm-12">
     {!! Form::label('faculty_id', 'Факультет:') !!}
-    <p>{{ $student->faculty->id }}</p>
+    <p>{{ $student->faculty->name }}</p>
+</div>
+
+<div class="col-sm-12">
+    {!! Form::label('speciality_id', 'Мамандық:') !!}
+    <p>{{ $student->speciality->name }}</p>
+</div>
+
+<div class="col-sm-12">
+    {!! Form::label('speciality_id', 'Контент:') !!}
+    <p>{!! $student->text !!}</p>
+</div>
+
+<div class="col-sm-12">
+    {!! Form::label('img', 'Сурет:') !!}
+    <img src="/{{ $student->img ?? null }}" alt="{{$student->title }}" class="img-uploaded" style="display: block; width: 300px;">
 </div>

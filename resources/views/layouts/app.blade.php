@@ -34,6 +34,8 @@
           integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw=="
           crossorigin="anonymous"/>
 
+    <link href="/css/colorbox.css" rel="stylesheet">
+
     @stack('third_party_stylesheets')
 
     @stack('page_css')
@@ -132,6 +134,11 @@
         integrity="sha512-DAc/LqVY2liDbikmJwUS1MSE3pIH0DFprKHZKPcJC7e3TtAOzT55gEMTleegwyuIWgCfOPOM8eLbbvFaG9F/cA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<script src="https://cdn.tiny.cloud/1/ke292r2fac7s52y7fpczy3u0fn4h1qa9zuwgjb7v8edriy6q/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script type="text/javascript" src="/js/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script>
+
 <script>
     $(function () {
         bsCustomFileInput.init();
@@ -140,6 +147,54 @@
     $("input[data-bootstrap-switch]").each(function () {
         $(this).bootstrapSwitch('state', $(this).prop('checked'));
     });
+
+    tinymce.init({
+        selector: '.editor',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+        tinycomments_mode: 'embedded',
+        relative_urls: false,
+        language: 'kk',
+        file_picker_callback : elFinderBrowser
+    });
+
+    function elFinderBrowser (callback, value, meta) {
+        tinymce.activeEditor.windowManager.openUrl({
+            title: 'File Manager',
+            url: '/elfinder/tinymce5',
+            /**
+             * On message will be triggered by the child window
+             * 
+             * @param dialogApi
+             * @param details
+             * @see https://www.tiny.cloud/docs/ui-components/urldialog/#configurationoptions
+             */
+            onMessage: function (dialogApi, details) {
+                if (details.mceAction === 'fileSelected') {
+                    const file = details.data.file;
+                    
+                    // Make file info
+                    const info = file.name;
+                    
+                    // Provide file and text for the link dialog
+                    if (meta.filetype === 'file') {
+                        callback(file.url, {text: info, title: info});
+                    }
+                    
+                    // Provide image and alt text for the image dialog
+                    if (meta.filetype === 'image') {
+                        callback(file.url, {alt: info});
+                    }
+                    
+                    // Provide alternative source and posted for the media dialog
+                    if (meta.filetype === 'media') {
+                        callback(file.url);
+                    }
+                    
+                    dialogApi.close();
+                }
+            }
+        });
+    }
 </script>
 
 @stack('third_party_scripts')

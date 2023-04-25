@@ -37,11 +37,14 @@ class Student extends Model
         'name',
         'surname',
         'phone',
+        'img',
+        'text',
         'birthday',
         'course',
         'education_type',
         'gender',
-        'faculty_id'
+        'faculty_id',
+        'speciality_id'
     ];
 
     /**
@@ -53,11 +56,14 @@ class Student extends Model
         'name' => 'string',
         'surname' => 'string',
         'phone' => 'string',
+        'img' => 'string',
+        'text' => 'string',
         'birthday' => 'string',
         'course' => 'string',
         'education_type' => 'string',
         'gender' => 'string',
-        'faculty_id' => 'integer'
+        'faculty_id' => 'integer',
+        'speciality_id' => 'integer',
     ];
 
     /**
@@ -73,11 +79,17 @@ class Student extends Model
         'course' => 'required',
         'education_type' => 'required',
         'gender' => 'required',
-        'faculty_id' => 'required'
+        'faculty_id' => 'required',
+        'speciality_id' => 'required',
     ];
 
     public function faculty()
     {
         return $this->belongsTo(Faculty::class);
+    }
+
+    public function speciality()
+    {
+        return $this->belongsTo(Speciality::class);
     }
 }

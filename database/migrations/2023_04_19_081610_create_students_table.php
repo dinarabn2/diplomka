@@ -19,6 +19,8 @@ class CreateStudentsTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('phone');
+            $table->string('img')->nullable();
+            $table->text('text')->nullable();
             $table->string('birthday');
             $table->string('course');
             $table->string('education_type');
@@ -35,6 +37,6 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('students');
+        Schema::dropIfExists('students');
     }
 }

@@ -4,8 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImageColumnToStudentsTable extends Migration
+class CreateTutorsTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -13,8 +14,11 @@ class AddImageColumnToStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->string('image')->nullable();
+        Schema::create('tutors', function (Blueprint $table) {
+            $table->id('id');
+            $table->string('name');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +29,6 @@ class AddImageColumnToStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->dropColumn('image');
-        });
+        Schema::drop('tutors');
     }
 }

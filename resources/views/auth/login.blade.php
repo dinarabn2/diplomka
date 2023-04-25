@@ -136,9 +136,6 @@
                         <button type="submit" class="btn btn-primary btn-block">Кіру</button>
                     </form>
         
-                    <p class="mb-1">
-                        <a class="login-text mt-10" href="{{ route('password.request') }}">Құпия сөзді ұмытсаңыз</a>
-                    </p>
                     <p class="mb-0">
                         <a class="login-text" href="{{ route('register') }}" class="text-center">Регистрация</a>
                     </p>
@@ -167,6 +164,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js"
         integrity="sha512-AJUWwfMxFuQLv1iPZOTZX0N/jTCIrLxyZjTRKQostNU71MzZTEPHjajSK20Kj1TwJELpP7gl+ShXw5brpnKwEg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 </body>
 </html>

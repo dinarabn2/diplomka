@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>Create Faculty</h1>
+                    <h1>Жаңа факультет</h1>
                 </div>
             </div>
         </div>
@@ -28,8 +28,8 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('faculties.index') }}" class="btn btn-default">Cancel</a>
+                {!! Form::submit('Сақтау', ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('faculties.index') }}" class="btn btn-default">Болдырмау</a>
             </div>
 
             {!! Form::close() !!}

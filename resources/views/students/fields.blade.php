@@ -45,3 +45,19 @@
     {!! Form::label('faculty_id', 'Факультет:') !!}
     {!! Form::select('faculty_id', $faculties, old('faculty_id', $student->faculty->id ?? null), ['class' => 'form-control']) !!}
 </div>
+
+<div class="form-group col-sm-6">
+    {!! Form::label('speciality_id', 'Мамандық:') !!}
+    {!! Form::select('speciality_id', $specialities, old('speciality_id', $student->speciality->id ?? null), ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-sm-12">
+    <textarea name="text" class="editor">{{ $student['text'] ?? null}}</textarea>
+</div>
+
+<div class="form-group col-sm-12">
+    <label for="feature_image">Сурет</label>
+    <img src="/{{ $student['img'] ?? null }}" alt="{{$student['title']  ?? null}}" class="img-uploaded" style="display: block; width: 300px;">
+    <input type="text" name="img" class="form-control" id="feature_image" name="feature_image" value="{{ $student['img'] ?? null }}" readonly>
+    <a href="" class="popup_selector" data-inputid="feature_image">Суретті таңдау</a>
+</div>

@@ -15,7 +15,6 @@
             <th>Тегі</th>
             <th>Туылған күні</th>
             <th>Жынысы</th>
-            <th>Факультет</th>
             <th>Курсы</th>
             <th>Оқу түрі</th>
             <th>Телефоны</th>
@@ -29,7 +28,6 @@
                 <td>{{ $student->surname }}</td>
                 <td>{{ $student->birthday }}</td>
                 <td>{{ $student->gender }}</td>
-                <td>{{ $student->faculty->name }}</td>
                 <td>{{ $student->course }}</td>
                 <td>{{ $student->education_type }}</td>
                 <td>{{ $student->phone }}</td>
@@ -44,7 +42,7 @@
                            class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Сіз келісесіз бе?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>

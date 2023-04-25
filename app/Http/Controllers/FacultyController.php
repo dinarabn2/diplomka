@@ -30,7 +30,7 @@ class FacultyController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $faculties = $this->facultyRepository->all();
+        $faculties = Faculty::orderBy('cipher')->get();
 
         return view('faculties.index')
             ->with('faculties', $faculties);
@@ -59,7 +59,7 @@ class FacultyController extends AppBaseController
 
         $faculty = $this->facultyRepository->create($input);
 
-        Flash::success('Faculty saved successfully.');
+        Flash::success('Факультет сәтті құтқарылды.');
 
         return redirect(route('faculties.index'));
     }
@@ -76,7 +76,7 @@ class FacultyController extends AppBaseController
         $faculty = $this->facultyRepository->find($id);
 
         if (empty($faculty)) {
-            Flash::error('Faculty not found');
+            Flash::error('Факультет табылмады');
 
             return redirect(route('faculties.index'));
         }
@@ -96,7 +96,7 @@ class FacultyController extends AppBaseController
         $faculty = $this->facultyRepository->find($id);
 
         if (empty($faculty)) {
-            Flash::error('Faculty not found');
+            Flash::error('Факультет табылмады');
 
             return redirect(route('faculties.index'));
         }
@@ -117,14 +117,14 @@ class FacultyController extends AppBaseController
         $faculty = $this->facultyRepository->find($id);
 
         if (empty($faculty)) {
-            Flash::error('Faculty not found');
+            Flash::error('Факультет табылмады');
 
             return redirect(route('faculties.index'));
         }
 
         $faculty = $this->facultyRepository->update($request->all(), $id);
 
-        Flash::success('Faculty updated successfully.');
+        Flash::success('Факультет сәтті жаңартылды.');
 
         return redirect(route('faculties.index'));
     }
@@ -143,14 +143,14 @@ class FacultyController extends AppBaseController
         $faculty = $this->facultyRepository->find($id);
 
         if (empty($faculty)) {
-            Flash::error('Faculty not found');
+            Flash::error('Факультет табылмады');
 
             return redirect(route('faculties.index'));
         }
 
         $this->facultyRepository->delete($id);
 
-        Flash::success('Faculty deleted successfully.');
+        Flash::success('Факультет сәтті жойылды.');
 
         return redirect(route('faculties.index'));
     }
