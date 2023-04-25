@@ -31,7 +31,7 @@
 <!-- Education Type Field -->
 <div class="col-sm-12">
     {!! Form::label('education_type', 'Оқу түрі:') !!}
-    <p>{{ $student->education_type }}</p>
+    <p>{{ $education[$student->education_type] }}</p>
 </div>
 
 <!-- Gender Field -->

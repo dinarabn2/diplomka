@@ -40,6 +40,7 @@ class StudentController extends AppBaseController
      * @var array
      */
     public $genderSelect = [];
+    public $educationSelect = [];
 
     public function __construct(StudentRepository $studentRepo, FacultyRepository $facultyRepo, SpecialityRepository $specialityRepo, GroupRepository  $groupRepositoryRepo)
     {
@@ -48,6 +49,7 @@ class StudentController extends AppBaseController
         $this->specialityRepository = $specialityRepo;
         $this->groupRepository = $groupRepositoryRepo;
         $this->genderSelect = ['male' => 'Ұл', 'female' => 'Қыз'];
+        $this->educationSelect = ['grant' => 'Грант', 'paid' => 'Ақылы'];
     }
 
     /**
@@ -63,7 +65,7 @@ class StudentController extends AppBaseController
         $students = Student::orderBy('surname')->get();
 
         return view('students.index')
-            ->with(['students' => $students, 'gender' => $this->genderSelect]);
+            ->with(['students' => $students, 'gender' => $this->genderSelect, 'education' => $this->educationSelect ]);
     }
 
     /**
@@ -77,8 +79,9 @@ class StudentController extends AppBaseController
         $specialities = $this->specialityRepository->makeModel()->pluck('name', 'id');
         $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
         $genders = $this->genderSelect;
+        $educations = $this->educationSelect;
 
-        return view('students.create', compact('faculties', 'specialities', 'groups', 'genders'));
+        return view('students.create', compact('faculties', 'specialities', 'groups', 'genders', 'educations'));
     }
 
     /**
@@ -107,6 +110,7 @@ class StudentController extends AppBaseController
         $student->course = $request->course;
         $student->education_type = $request->education_type;
         $student->gender = $request->gender;
+        $student->education_type = $request->education_type;
         $student->group_id = $request->group_id;
 
         $student->save();
@@ -132,7 +136,7 @@ class StudentController extends AppBaseController
             return redirect(route('students.index'));
         }
 
-        return view('students.show')->with(['student' => $student, 'gender' => $this->genderSelect]);
+        return view('students.show')->with(['student' => $student, 'gender' => $this->genderSelect, 'education' => $this->educationSelect]);
     }
 
     /**
@@ -149,6 +153,7 @@ class StudentController extends AppBaseController
         $specialities = $this->specialityRepository->makeModel()->pluck('name', 'id');
         $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
         $genders = $this->genderSelect;
+        $educations = $this->educationSelect;
 
         if (empty($student)) {
             Flash::error('Студент табылмады.');
@@ -162,7 +167,8 @@ class StudentController extends AppBaseController
                 'faculties' => $faculties, 
                 'specialities' => $specialities, 
                 'groups' => $groups,
-                'genders' => $genders
+                'genders' => $genders,
+                'educations' => $educations,
             ]);
     }
 

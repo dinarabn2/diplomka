@@ -11,6 +11,7 @@
     <table class="table" id="faculties-table">
         <thead>
         <tr>
+            <th>№</th>
             <th>Аты</th>
             <th>Шифр</th>
             <th colspan="3">Өзгерту</th>
@@ -19,6 +20,7 @@
         <tbody>
         @foreach($faculties as $faculty)
             <tr>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $faculty->name }}</td>
             <td>{{ $faculty->cipher }}</td>
                 <td width="120">

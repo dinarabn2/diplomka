@@ -31,7 +31,7 @@
 <!-- Education Type Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('education_type', 'Оқу түрі:') !!}
-    {!! Form::text('education_type', null, ['class' => 'form-control']) !!}
+    {!! Form::select('education_type', $educations, old('name', $student->education ?? null), ['class' => 'form-control']) !!}
 </div>
 
 <!-- Gender Field -->
