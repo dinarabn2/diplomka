@@ -41,3 +41,5 @@ Route::resource('tutors', App\Http\Controllers\TutorController::class);
 
 
 Route::resource('groups', App\Http\Controllers\GroupController::class);
+
+Route::get('thanks', App\Http\Controllers\ThanksController::class)->name('thanks');

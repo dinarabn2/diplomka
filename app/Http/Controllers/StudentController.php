@@ -103,12 +103,10 @@ class StudentController extends AppBaseController
      */
     public function store(CreateStudentRequest $request)
     {
-        $input = $request->all();
+        $input = $request->except('_token');
         $student = $this->studentRepository->create($input);
 
-        Flash::success('Студент сәтті сақталды.');
-
-        return redirect(route('students.index'));
+        return redirect()->route('thanks');
 
         // $student = new Student();
         // $student->name = $request->name;

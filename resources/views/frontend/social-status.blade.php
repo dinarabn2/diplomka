@@ -1,34 +1,6 @@
 @extends('layouts.front')
 
 @section('content')
-<style>
-    .tac {
-        text-align: center;
-    }
-    .card {
-        border: none;
-    }
-    .card-footer {
-        border: none;
-        background: none;
-    }
-    select {
-        cursor: pointer;
-    }
-    label {
-        margin-bottom: 4px;
-        font-weight: 600;
-    }
-    .form-control {
-        font-weight: 500;
-        padding: 10px 12px;
-        background: rgba(0,0,0,.03);
-        border-radius: 8px;
-    }
-    select.form-control:not([size]):not([multiple]) {
-        height: auto;
-    }
-</style>
 
 {{-- Start --}}
 <section class="content-header">
@@ -42,7 +14,7 @@
 </section>
 
 <div class="content px-3">
-
+    @if(isset($message)) <div class="alert alert-danger" role="alert">{{$message}}</div> @endif
     @include('adminlte-templates::common.errors')
 
     <div class="card">
