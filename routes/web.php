@@ -18,9 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', [App\Http\Controllers\FrontController::class, 'socialStatus'])->name('social.status');
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::resource('students', App\Http\Controllers\StudentController::class);

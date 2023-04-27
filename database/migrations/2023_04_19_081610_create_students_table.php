@@ -23,6 +23,7 @@ class CreateStudentsTable extends Migration
             $table->text('text')->nullable();
             $table->string('birthday');
             $table->string('course');
+            $table->string('email');
             $table->string('education_type');
             $table->string('gender');
             $table->timestamps();

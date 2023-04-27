@@ -44,7 +44,7 @@
                 gap: 20px;
                 margin: 0 auto; 
                 width: 360px;
-                height: 176px;
+                height: 100px;
                 background: rgba(0, 0, 0, 0.3);
                 border-radius: 16px;
             }
@@ -71,7 +71,15 @@
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0 promo-bg">
-            @if (Route::has('login'))
+            <div class="promo-center">
+                <img src="https://rnd.evrika.com/storage/photos/shares/644164dcb2140.png" alt="">
+                <div class="promo-title">М. Әуезов атындағы ОҚУ <br> Әлеуметтік қолдау</div>
+                    <div class="promo-wrapper">
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline promo-link">Өтініш қалдыру</a>
+                    </div>
+                </div>
+            </div>
+            {{-- @if (Route::has('login'))
                 <div class="promo-center">
                     @auth
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
@@ -89,7 +97,7 @@
                         </div>
                     @endif
                 </div>
-            @endif
+            @endif --}}
         </div>
     </body>
 </html>

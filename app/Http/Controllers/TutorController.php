@@ -58,7 +58,7 @@ class TutorController extends AppBaseController
 
         $tutor = $this->tutorRepository->create($input);
 
-        Flash::success('Tutor saved successfully.');
+        Flash::success('Куратор сәтті сақталды.');
 
         return redirect(route('tutors.index'));
     }
@@ -75,7 +75,7 @@ class TutorController extends AppBaseController
         $tutor = $this->tutorRepository->find($id);
 
         if (empty($tutor)) {
-            Flash::error('Tutor not found');
+            Flash::error('Куратор табылмады');
 
             return redirect(route('tutors.index'));
         }
@@ -95,7 +95,7 @@ class TutorController extends AppBaseController
         $tutor = $this->tutorRepository->find($id);
 
         if (empty($tutor)) {
-            Flash::error('Tutor not found');
+            Flash::error('Куратор табылмады');
 
             return redirect(route('tutors.index'));
         }
@@ -116,14 +116,14 @@ class TutorController extends AppBaseController
         $tutor = $this->tutorRepository->find($id);
 
         if (empty($tutor)) {
-            Flash::error('Tutor not found');
+            Flash::error('Куратор табылмады');
 
             return redirect(route('tutors.index'));
         }
 
         $tutor = $this->tutorRepository->update($request->all(), $id);
 
-        Flash::success('Tutor updated successfully.');
+        Flash::success('Куратор сәтті жаңартылды.');
 
         return redirect(route('tutors.index'));
     }
@@ -142,14 +142,14 @@ class TutorController extends AppBaseController
         $tutor = $this->tutorRepository->find($id);
 
         if (empty($tutor)) {
-            Flash::error('Tutor not found');
+            Flash::error('Куратор табылмады');
 
             return redirect(route('tutors.index'));
         }
 
         $this->tutorRepository->delete($id);
 
-        Flash::success('Tutor deleted successfully.');
+        Flash::success('Куратор сәтті жойылды.');
 
         return redirect(route('tutors.index'));
     }

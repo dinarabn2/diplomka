@@ -19,21 +19,21 @@ use App\Models\Student;
 class StudentController extends AppBaseController
 {
     /** @var StudentRepository $studentRepository*/
-    private $studentRepository;
+    public $studentRepository;
 
     /**
      * 
      * @var FacultyRepository $facultyRepository
      * @var SpecialityRepository $specialityRepository
      */
-    private $facultyRepository;
-    private $specialityRepository;
+    public $facultyRepository;
+    public $specialityRepository;
 
     /**
      * 
      * @var GroupRepository
      */
-    private $groupRepository;
+    public $groupRepository;
 
     /**
      * 
@@ -93,30 +93,30 @@ class StudentController extends AppBaseController
      */
     public function store(CreateStudentRequest $request)
     {
-        // $input = $request->all();
-        // $student = $this->studentRepository->create($input);
-
-        // Flash::success('Студент сәтті сақталды.');
-
-        // return redirect(route('students.index'));
-
-        $student = new Student();
-        $student->name = $request->name;
-        $student->surname = $request->surname;
-        $student->phone = $request->phone;
-        $student->img = $request->img;
-        $student->text = $request->text;
-        $student->birthday = $request->birthday;
-        $student->course = $request->course;
-        $student->education_type = $request->education_type;
-        $student->gender = $request->gender;
-        $student->education_type = $request->education_type;
-        $student->group_id = $request->group_id;
-
-        $student->save();
+        $input = $request->all();
+        $student = $this->studentRepository->create($input);
 
         Flash::success('Студент сәтті сақталды.');
+
         return redirect(route('students.index'));
+
+        // $student = new Student();
+        // $student->name = $request->name;
+        // $student->surname = $request->surname;
+        // $student->phone = $request->phone;
+        // $student->img = $request->img;
+        // $student->text = $request->text;
+        // $student->birthday = $request->birthday;
+        // $student->course = $request->course;
+        // $student->education_type = $request->education_type;
+        // $student->gender = $request->gender;
+        // $student->education_type = $request->education_type;
+        // $student->group_id = $request->group_id;
+
+        // $student->save();
+
+        // Flash::success('Студент сәтті сақталды.');
+        // return redirect(route('students.index'));
     }
 
     /**

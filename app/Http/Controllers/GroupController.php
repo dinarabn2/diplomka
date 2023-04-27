@@ -70,7 +70,7 @@ class GroupController extends AppBaseController
 
         $group = $this->groupRepository->create($input);
 
-        Flash::success('Group saved successfully.');
+        Flash::success('Топ сәтті сақталды.');
 
         return redirect(route('groups.index'));
     }
@@ -87,7 +87,7 @@ class GroupController extends AppBaseController
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
-            Flash::error('Group not found');
+            Flash::error('Топ табылмады');
 
             return redirect(route('groups.index'));
         }
@@ -110,7 +110,7 @@ class GroupController extends AppBaseController
         $specialities = $this->specialityRepository->makeModel()->pluck('name', 'id');
 
         if (empty($group)) {
-            Flash::error('Group not found');
+            Flash::error('Топ табылмады');
 
             return redirect(route('groups.index'));
         }
@@ -131,14 +131,14 @@ class GroupController extends AppBaseController
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
-            Flash::error('Group not found');
+            Flash::error('Топ табылмады');
 
             return redirect(route('groups.index'));
         }
 
         $group = $this->groupRepository->update($request->all(), $id);
 
-        Flash::success('Group updated successfully.');
+        Flash::success('Топ сәтті жаңартылды.');
 
         return redirect(route('groups.index'));
     }
@@ -157,14 +157,14 @@ class GroupController extends AppBaseController
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
-            Flash::error('Group not found');
+            Flash::error('Топ табылмады');
 
             return redirect(route('groups.index'));
         }
 
         $this->groupRepository->delete($id);
 
-        Flash::success('Group deleted successfully.');
+        Flash::success('Топ сәтті жойылды.');
 
         return redirect(route('groups.index'));
     }

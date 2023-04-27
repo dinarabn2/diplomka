@@ -41,6 +41,7 @@ class Student extends Model
         'text',
         'birthday',
         'course',
+        'email',
         'education_type',
         'gender',
         'group_id'
@@ -59,6 +60,7 @@ class Student extends Model
         'text' => 'string',
         'birthday' => 'string',
         'course' => 'string',
+        'email' => 'string',
         'education_type' => 'string',
         'gender' => 'string',
         'group_id' => 'integer',
@@ -75,6 +77,7 @@ class Student extends Model
         'phone' => 'required',
         'birthday' => 'required',
         'course' => 'required',
+        'email' => 'required',
         'education_type' => 'required',
         'gender' => 'required',
         'group_id' => 'required',
