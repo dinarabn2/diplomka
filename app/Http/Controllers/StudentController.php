@@ -41,6 +41,7 @@ class StudentController extends AppBaseController
      */
     public $genderSelect = [];
     public $educationSelect = [];
+    public $statusSelect = [];
 
     public function __construct(StudentRepository $studentRepo, FacultyRepository $facultyRepo, SpecialityRepository $specialityRepo, GroupRepository  $groupRepositoryRepo)
     {
@@ -50,6 +51,14 @@ class StudentController extends AppBaseController
         $this->groupRepository = $groupRepositoryRepo;
         $this->genderSelect = ['male' => 'Ұл', 'female' => 'Қыз'];
         $this->educationSelect = ['grant' => 'Грант', 'paid' => 'Ақылы'];
+        $this->statusSelect = [
+            '1' => 'Тұл жетім',
+            '2' => 'Жетім',
+            '3' => 'Мүгедек',
+            '4' => 'Ата-анасы мүгедек',
+            '5' => 'Көп балалы отбасынан',
+            '6' => 'М. Әуезов атындағы ОҚУ-да бір отбасынан екі немесе одан көп оқитын студенттер'
+        ];
     }
 
     /**
@@ -65,7 +74,7 @@ class StudentController extends AppBaseController
         $students = Student::orderBy('surname')->get();
 
         return view('students.index')
-            ->with(['students' => $students, 'gender' => $this->genderSelect, 'education' => $this->educationSelect ]);
+            ->with(['students' => $students, 'gender' => $this->genderSelect, 'education' => $this->educationSelect, 'status' => $this->statusSelect ]);
     }
 
     /**
@@ -80,8 +89,9 @@ class StudentController extends AppBaseController
         $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
         $genders = $this->genderSelect;
         $educations = $this->educationSelect;
+        $statuses = $this->statusSelect;
 
-        return view('students.create', compact('faculties', 'specialities', 'groups', 'genders', 'educations'));
+        return view('students.create', compact('faculties', 'specialities', 'groups', 'genders', 'educations', 'statuses'));
     }
 
     /**

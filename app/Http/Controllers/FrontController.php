@@ -14,8 +14,9 @@ class FrontController extends StudentController
         $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
         $genders = $this->genderSelect;
         $educations = $this->educationSelect;
+        $statuses = $this->statusSelect;
 
-        return view('frontend.social-status', compact('faculties', 'specialities', 'groups', 'genders', 'educations'));
+        return view('frontend.social-status', compact('faculties', 'specialities', 'groups', 'genders', 'educations', 'statuses'));
     }
 
 }

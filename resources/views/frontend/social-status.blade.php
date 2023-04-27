@@ -35,7 +35,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-12">
-                <h1 class="tac">Өтініш қалдыру формасы</h1>
+                <h1 class="tac" style="margin-top: 30px;">Өтініш қалдыру формасы</h1>
             </div>
         </div>
     </div>

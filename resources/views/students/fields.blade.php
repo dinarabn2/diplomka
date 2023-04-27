@@ -13,7 +13,7 @@
 <!-- Email Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('email', 'Почтасы:') !!}
-    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
+    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
 </div>
 
 <!-- Phone Field -->
@@ -37,19 +37,19 @@
 <!-- Education Type Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('education_type', 'Оқу түрі:') !!}
-    {!! Form::select('education_type', $educations, old('name', $student->education ?? null), ['class' => 'form-control']) !!}
+    {!! Form::select('education_type', $educations, old('name', $student->education ?? null), ['class' => 'form-control', 'placeholder' => 'Таңдаңыз']) !!}
 </div>
 
 <!-- Gender Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('gender', 'Жынысы:') !!}
-    {!! Form::select('gender',  $genders, old('name', $student->gender ?? null), ['class' => 'form-control']) !!}
+    {!! Form::select('gender', $genders, old('name', $student->gender ?? null), ['class' => 'form-control', 'placeholder' => 'Таңдаңыз']) !!}
 </div>
 
 <!-- Group id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('group_id', 'Группа:') !!}
-    {!! Form::select('group_id', $groups, old('group_id', $student->group->id ?? null), ['class' => 'form-control']) !!}
+    {!! Form::select('group_id', $groups, old('group_id', $student->group->id ?? null), ['class' => 'form-control', 'placeholder' => 'Таңдаңыз']) !!}
 </div>
 
 {{-- <div class="form-group col-sm-12">
@@ -65,8 +65,8 @@
 
 <div class="form-group col-sm-12 mx-auto">
     {!! Form::label('surname', 'Әлеуметтік жағдайы:') !!}
-    <select class="form-control" id="select">
-        <option selected disabled>Таңдаңыз</option>
+    <select class="form-control" id="select" required>
+        <option selected disabled hidden>Таңдаңыз</option>
         <option value="1">Тұл жетім</option>
         <option value="2">Жетім</option>
         <option value="3">Мүгедек</option>
@@ -81,31 +81,31 @@
             <li class="col-sm-4">
                 <div class="form-group">
                     <label for="">Туу туралы куәлік</label>
-                    <input name="file" type="file" class="form-control-file" id="">
+                    <input name="birth_certificate" type="file" class="form-control-file" id="">
                 </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Қайтыс болғаны жайлы анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="death_certificate" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Қамқорлығына бергені туралы анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_of_guardianship" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Жеке куәлік</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="identification_card" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Оқып жатқаны туралы анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_of_training" type="file" class="form-control-file" id="">
                     </div>
             </li>
         </ol>
@@ -117,31 +117,31 @@
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Туу туралы куәлік</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="birth_certificate" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Қайтыс болғаны жайлы анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="death_certificate" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Қамқорлығына алғаны туралы анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_of_guardianship" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Жеке куәлік</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="identification_card" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Оқып жатқаны туралы анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_of_training" type="file" class="form-control-file" id="">
                     </div>
             </li>
         </ol>
@@ -153,13 +153,13 @@
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Туу туралы куәлік</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="birth_certificate" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Мүгедектігін растайтын анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_confirming_disability" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
@@ -171,13 +171,13 @@
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Жеке куәлік</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="identification_card" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Оқып жатқаны туралы анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_of_training" type="file" class="form-control-file" id="">
                     </div>
             </li>
         </ol>
@@ -189,31 +189,31 @@
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Туу туралы куәлік</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="birth_certificate" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Ата-анасының мүгедектігін растайтын анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_confirming_disability" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">ХҚКО анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_con" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Жеке куәлік</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="identification_card" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Оқып жатқаны туралы анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_of_training" type="file" class="form-control-file" id="">
                     </div>
             </li>
         </ol>
@@ -225,31 +225,31 @@
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Туу туралы куәлік</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="birth_certificate" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Ата-анасының жеке куәлігі</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="id_parents" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Отбасы мүшелерінің туу туралы куәлігі</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="bc_family_members" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Алтын немесе күміс алқа кітапшасы</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="gold_or_silver_book" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Оқып жатқаны туралы анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_of_training" type="file" class="form-control-file" id="">
                     </div>
             </li>
         </ol>
@@ -261,25 +261,25 @@
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Туу туралы куәлік</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="birth_certificate" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Басқа да студенттердің оқу туралы анықтамасы</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="other_students" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Жеке куәлік</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="identification_card" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">Оқып жатқаны туралы анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_of_training" type="file" class="form-control-file" id="">
                     </div>
             </li>
         </ol>
