@@ -104,7 +104,16 @@ class StudentController extends AppBaseController
     public function store(CreateStudentRequest $request)
     {
         $input = $request->except('_token');
-        $student = $this->studentRepository->create($input);
+        dd($input);
+        
+        $socialStatus = $student->socialStatus()->create([
+            'birth_certificate' => $input['birth_certificate']
+        ]);
+        $input['social_status_id '] = $socialStatus->id;
+        $student = $this->studentRepository->makeModel()->socialStatus()->create($input);
+        // $student = $this->studentRepository->create($input);
+        
+        dd($student);
 
         return redirect()->route('thanks');
 

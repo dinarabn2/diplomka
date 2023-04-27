@@ -44,7 +44,8 @@ class Student extends Model
         'email',
         'education_type',
         'gender',
-        'group_id'
+        'group_id',
+        'social_status_id'
     ];
 
     /**
@@ -64,6 +65,7 @@ class Student extends Model
         'education_type' => 'string',
         'gender' => 'string',
         'group_id' => 'integer',
+        'social_status_id' => 'integer' 
     ];
 
     /**
@@ -81,6 +83,7 @@ class Student extends Model
         'education_type' => 'required',
         'gender' => 'required',
         'group_id' => 'required',
+        'social_status_id' => 'nullable'
     ];
 
     public function faculty()
@@ -96,5 +99,10 @@ class Student extends Model
     public function group()
     {
         return $this->belongsTo(Group::class);
+    }
+
+    public function socialStatus()
+    {
+        return $this->belongsTo(SocialStatus::class);
     }
 }

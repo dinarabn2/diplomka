@@ -165,7 +165,7 @@
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">ХҚКО анықтама</label>
-                        <input name="file" type="file" class="form-control-file" id="">
+                        <input name="certificate_con" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">

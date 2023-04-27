@@ -14,12 +14,11 @@
 </section>
 
 <div class="content px-3">
-    @if(isset($message)) <div class="alert alert-danger" role="alert">{{$message}}</div> @endif
     @include('adminlte-templates::common.errors')
 
     <div class="card">
 
-        {!! Form::open(['route' => 'students.store']) !!}
+        {!! Form::open(['route' => 'students.store', 'enctype'=>'multipart/form-data']) !!}
 
         <div class="card-body">
 
