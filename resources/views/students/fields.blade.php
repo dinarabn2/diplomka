@@ -74,8 +74,15 @@
         <option value="5">Көпбалалы отбасы</option>
         <option value="6">Бір отбасыдан 2 немесе оданда көп студент</option>
     </select>
+
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="">Документы</label>
+            <input name="birth_certificate" type="file" class="form-control-file" id="">
+        </div>
+    </div>
     
-    <div class="status__wrapper status__wrapper-1">
+    {{-- <div class="status__wrapper status__wrapper-1">
         <h3 class="mt-3">Тұл жетім</h3>
         <ol class="row">
             <li class="col-sm-4">
@@ -165,7 +172,7 @@
             <li class="col-sm-4">
                     <div class="form-group">
                         <label for="">ХҚКО анықтама</label>
-                        <input name="certificate_con" type="file" class="form-control-file" id="">
+                        <input name="file" type="file" class="form-control-file" id="">
                     </div>
             </li>
             <li class="col-sm-4">
@@ -283,7 +290,7 @@
                     </div>
             </li>
         </ol>
-    </div>
+    </div> --}}
 </div>
 
 <script>
