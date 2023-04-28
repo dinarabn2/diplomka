@@ -26,7 +26,7 @@ class CreateSocialStatusesTable extends Migration
             $table->string('bc_family_members')->nullable();
             $table->string('gold_or_silver_book')->nullable();
             $table->string('other_students')->nullable();
-            $table->timestamps()->nullable();
+            $table->timestamps();
         });
     }
 
