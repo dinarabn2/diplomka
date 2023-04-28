@@ -15,6 +15,7 @@ class CreateSocialStatusesTable extends Migration
     {
         Schema::create('social_statuses', function (Blueprint $table) {
             $table->id();
+            $table->string('document');
             $table->string('birth_certificate')->nullable();
             $table->string('death_certificate')->nullable();
             $table->string('certificate_of_guardianship')->nullable();

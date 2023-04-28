@@ -44,9 +44,17 @@ class StudentRepository extends BaseRepository
         return Student::class;
     }
 
+    public function addStudent($request, $action)
+    {
+        $destinationPath = public_path('files/students/');
+        $input = $action->handle($request, $destinationPath);
+
+        return $this->create($input);
+    }
+
     public function updateStudent($request, $id, $action)
     {
-        $destinationPath = public_path('/files/img/');
+        $destinationPath = public_path('/files/students/');
         $input = $action->handle($request, $destinationPath);
 
         return $this->update($input, $id);

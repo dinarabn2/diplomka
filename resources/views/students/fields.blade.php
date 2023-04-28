@@ -1,25 +1,25 @@
-<!-- Surname Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('surname', 'Фамилия:') !!}
-    {!! Form::text('surname', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
-</div>
-
 <!-- Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('name', 'Аты:') !!}
     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
 </div>
 
-<!-- Email Field -->
+<!-- Surname Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('email', 'Почтасы:') !!}
-    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
+    {!! Form::label('surname', 'Фамилия:') !!}
+    {!! Form::text('surname', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
 </div>
 
 <!-- Phone Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('phone', 'Телефоны:') !!}
     {!! Form::text('phone', null, ['class' => 'form-control art-stranger', 'placeholder' => 'Енгізіңіз']) !!}
+</div>
+
+<!-- Email Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('email', 'Почтасы:') !!}
+    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
 </div>
 
 <!-- Birthday Field -->
@@ -65,20 +65,20 @@
 
 <div class="form-group col-sm-12 mx-auto">
     {!! Form::label('surname', 'Әлеуметтік жағдайы:') !!}
-    <select class="form-control" id="select" required>
+    <select name="social_name" class="form-control" id="select" required>
         <option selected disabled hidden>Таңдаңыз</option>
-        <option value="1">Тұл жетім</option>
-        <option value="2">Жетім</option>
-        <option value="3">Мүгедек</option>
-        <option value="4">Ата-анасы мүгедек</option>
-        <option value="5">Көпбалалы отбасы</option>
-        <option value="6">Бір отбасыдан 2 немесе оданда көп студент</option>
+        <option value="Тұл жетім">Тұл жетім</option>
+        <option value="Жетім">Жетім</option>
+        <option value="Мүгедек">Мүгедек</option>
+        <option value="Ата-анасы мүгедек">Ата-анасы мүгедек</option>
+        <option value="Көпбалалы отбасы">Көпбалалы отбасы</option>
+        <option value="Бір отбасыдан 2 немесе оданда көп студент">Бір отбасыдан 2 немесе оданда көп студент</option>
     </select>
 
     <div class="col-sm-4">
         <div class="form-group">
             <label for="">Документы</label>
-            <input name="birth_certificate" type="file" class="form-control-file" id="">
+            <input name="document" type="file" class="form-control-file" id="">
         </div>
     </div>
     

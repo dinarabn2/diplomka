@@ -31,7 +31,7 @@
                 <td>{{ $student->birthday }}</td>
                 <td>@if ($student->gender && $gender) {{ $gender[$student->gender] }} @else 'Not data' @endif</td>
                 <td>{{ $student->course }}</td>
-                <td>{{ $education[$student->education_type] }}</td>
+                <td>{{ $education[$student->education_type] ?? '' }}</td>
                 <td>{{ $student->phone }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['students.destroy', $student->id], 'method' => 'delete']) !!}

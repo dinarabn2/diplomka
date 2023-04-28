@@ -10,7 +10,8 @@ class SocialStatus extends Model
     use HasFactory;
 
     protected $fillable = [
-        'birth_certificate'
+        'name',
+        'document'
     ];
 
     public function students()

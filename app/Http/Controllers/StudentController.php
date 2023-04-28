@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateStudentRequest;
-use App\Http\Requests\UpdateStudentRequest;
-use App\Repositories\StudentRepository;
-use App\Repositories\FacultyRepository;
-use App\Repositories\GroupRepository;
-use App\Repositories\SpecialityRepository;
-use App\Http\Controllers\AppBaseController;
-use App\Models\Faculty;
-use App\Models\Speciality;
-use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\Models\Faculty;
 use App\Models\Student;
+use App\Models\Speciality;
+use Illuminate\Http\Request;
+use App\Actions\UploadFileAction;
+use App\Repositories\GroupRepository;
+use App\Repositories\FacultyRepository;
+use App\Repositories\StudentRepository;
+use App\Repositories\SpecialityRepository;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests\CreateStudentRequest;
+use App\Http\Requests\UpdateStudentRequest;
 
 class StudentController extends AppBaseController
 {
@@ -101,19 +102,17 @@ class StudentController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateStudentRequest $request)
+    public function store(CreateStudentRequest $request, UploadFileAction $action)
     {
         $input = $request->except('_token');
-        dd($input);
+
+        $student = $this->studentRepository->addStudent($request, $action);
         
         $socialStatus = $student->socialStatus()->create([
-            'birth_certificate' => $input['birth_certificate']
+            'name' => $input['name'],
+            'document' => $student['document']
         ]);
-        $input['social_status_id '] = $socialStatus->id;
-        $student = $this->studentRepository->makeModel()->socialStatus()->create($input);
         // $student = $this->studentRepository->create($input);
-        
-        dd($student);
 
         return redirect()->route('thanks');
 
