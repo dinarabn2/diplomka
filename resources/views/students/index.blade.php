@@ -16,13 +16,30 @@
             </div>
         </div>
 
-        <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Іздеу" aria-label="Search">
-                <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                    <i class="fas fa-search fa-fw"></i>
-                </button>
+        <div class="card card-body pb-0">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-lg-3">
+                    <div class="form-group">
+                        <input class=" form-control" placeholder="Тегі" title="Тегі" name="surname" type="text">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-3">
+                    <div class="form-group">
+                        <input class=" form-control" placeholder="Аты" title="Аты" name="name" type="text">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-3">
+                    <div class="form-group">
+                        <select class="form-control" name="group_id">
+                            <option value="" disabled hidden selected>Группа</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-2 ">
+                    <div class="filter-control-buttons">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>&nbsp;Іздеу</button>
+                        <a href="#" class="btn btn-outline-secondary" title="" data-toggle="tooltip" data-original-title="Очистить фильтр"><i class="fa fa-eraser"></i></a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@
     <table class="table" id="tutors-table">
         <thead>
         <tr>
-            <th>№</th>
+            <th style="width: 70px;">№</th>
             <th>Аты</th>
             <th colspan="3">Өзгерту</th>
         </tr>

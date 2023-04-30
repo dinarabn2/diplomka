@@ -1,57 +1,57 @@
-<!-- Name Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('name', 'Аты:') !!}
-    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
-</div>
-
 <!-- Surname Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('surname', 'Фамилия:') !!}
-    {!! Form::text('surname', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
+    {!! Form::text('surname', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз', 'required']) !!}
 </div>
 
-<!-- Phone Field -->
+<!-- Name Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('phone', 'Телефоны:') !!}
-    {!! Form::text('phone', null, ['class' => 'form-control art-stranger', 'placeholder' => 'Енгізіңіз']) !!}
-</div>
-
-<!-- Email Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('email', 'Почтасы:') !!}
-    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
+    {!! Form::label('name', 'Аты:') !!}
+    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз', 'required']) !!}
 </div>
 
 <!-- Birthday Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('birthday', 'Туылған күні:') !!}
-    {!! Form::date('birthday', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
-</div>
-
-<!-- Course Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('course', 'Курсы:') !!}
-    {!! Form::text('course', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
-</div>
-
-<!-- Education Type Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('education_type', 'Оқу түрі:') !!}
-    {!! Form::select('education_type', $educations, old('name', $student->education ?? null), ['class' => 'form-control', 'placeholder' => 'Таңдаңыз']) !!}
+    {!! Form::date('birthday', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз', 'required']) !!}
 </div>
 
 <!-- Gender Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('gender', 'Жынысы:') !!}
-    {!! Form::select('gender', $genders, old('name', $student->gender ?? null), ['class' => 'form-control', 'placeholder' => 'Таңдаңыз']) !!}
+    {!! Form::select('gender', $genders, old('name', $student->gender ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз', 'required']) !!}
+</div>
+
+
+<!-- Email Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('email', 'Почтасы:') !!}
+    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз', 'required']) !!}
+</div>
+
+<!-- Phone Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('phone', 'Телефоны:') !!}
+    {!! Form::text('phone', null, ['class' => 'form-control art-stranger', 'placeholder' => 'Енгізіңіз', 'required']) !!}
+</div>
+
+<!-- Course Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('course', 'Курсы:') !!}
+    {!! Form::text('course', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз', 'required']) !!}
+</div>
+
+<!-- Education Type Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('education_type', 'Оқу түрі:') !!}
+    {!! Form::select('education_type', $educations, old('name', $student->education ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз', 'required']) !!}
 </div>
 
 <!-- Group id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('group_id', 'Группа:') !!}
-    {!! Form::select('group_id', $groups, old('group_id', $student->group->id ?? null), ['class' => 'form-control', 'placeholder' => 'Таңдаңыз']) !!}
+    {!! Form::select('group_id', $groups, old('group_id', $student->group->id ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз', 'required']) !!}
 </div>
-
 {{-- <div class="form-group col-sm-12">
     <textarea name="text" class="editor">{{ $student['text'] ?? null}}</textarea>
 </div>
@@ -63,10 +63,10 @@
     <a href="" class="popup_selector" data-inputid="feature_image">Суретті таңдау</a>
 </div> --}}
 
-<div class="form-group col-sm-12 mx-auto">
+<div class="form-group col-sm-6">
     {!! Form::label('surname', 'Әлеуметтік жағдайы:') !!}
     <select name="social_name" class="form-control" id="select" required>
-        <option selected disabled hidden>Таңдаңыз</option>
+        <option selected disabled hidden>Тандаңыз</option>
         <option value="Тұл жетім">Тұл жетім</option>
         <option value="Жетім">Жетім</option>
         <option value="Мүгедек">Мүгедек</option>
@@ -74,15 +74,10 @@
         <option value="Көпбалалы отбасы">Көпбалалы отбасы</option>
         <option value="Бір отбасыдан 2 немесе оданда көп студент">Бір отбасыдан 2 немесе оданда көп студент</option>
     </select>
+</div>
 
-    <div class="col-sm-4">
-        <div class="form-group">
-            <label for="">Документы</label>
-            <input name="document" type="file" class="form-control-file" id="">
-        </div>
-    </div>
-    
-    {{-- <div class="status__wrapper status__wrapper-1">
+<div class="form-group col-sm-12">
+    <div class="status__wrapper status__wrapper-1">
         <h3 class="mt-3">Тұл жетім</h3>
         <ol class="row">
             <li class="col-sm-4">
@@ -290,11 +285,21 @@
                     </div>
             </li>
         </ol>
-    </div> --}}
+    </div>
 </div>
 
-<script>
+<div class="col-sm-6 mx-auto">
+    <div class="form-group">
+        <label class="input-file">
+            <span class="input-file-text" type="text"></span>
+            <input type="file" name="file" required>        
+            <span class="input-file-btn">Файлды тандаңыз</span>
+        </label>
+    </div>
+</div>
 
+<script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+<script>
 const select = document.getElementById('select');
     const docBlocks = document.querySelectorAll('.status__wrapper');
 
@@ -312,11 +317,34 @@ const select = document.getElementById('select');
         const getValue = select.value;
         console.log(getValue);
 
-        if (lastCounter) {
-            document.querySelector(`.status__wrapper-${lastCounter}`).style.display = 'none';
+        switch (getValue) {
+            case 'Тұл жетім':
+                hiddenBlock();
+                document.querySelector('.status__wrapper-1').style.display = 'block';
+                break;
+            case 'Жетім':
+                hiddenBlock();
+                document.querySelector('.status__wrapper-2').style.display = 'block';
+                break;
+            case 'Мүгедек':
+                hiddenBlock();
+                document.querySelector('.status__wrapper-3').style.display = 'block';
+                break;
+            case 'Ата-анасы мүгедек':
+                hiddenBlock();
+                document.querySelector('.status__wrapper-4').style.display = 'block';
+                break;
+            case 'Көпбалалы отбасы':
+                hiddenBlock();
+                document.querySelector('.status__wrapper-5').style.display = 'block';
+                break;
+            case 'Бір отбасыдан 2 немесе оданда көп студент':
+                hiddenBlock();
+                document.querySelector('.status__wrapper-6').style.display = 'block';
+                break;
+            default:
+                break;
         }
-        document.querySelector(`.status__wrapper-${getValue}`).style.display = 'block';
-        lastCounter = getValue;
     });
     const mask = (selector) => {
 
@@ -382,4 +410,9 @@ const select = document.getElementById('select');
     };
 
     checkTextInputs('[name="email"]');
+
+    $('.input-file input[type=file]').on('change', function(){
+        let file = this.files[0];
+        $(this).closest('.input-file').find('.input-file-text').html(file.name);
+    });
 </script>

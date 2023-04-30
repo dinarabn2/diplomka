@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name') }} | Login</title>
+    <title>Авторизация - Әлеуметтік қолдау</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -23,9 +23,15 @@
           integrity="sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg=="
           crossorigin="anonymous"/>
 
+    <link rel="shortcut icon" href="https://rnd.evrika.com/storage/photos/shares/644d077191a0c.png" type="image/png">
+
     <style>
         .login-page {
-            background: #6495ED;
+            background-image: url(https://smart.ukgu.kz/assets/media/illustrations/sketchy-1/14-dark.png);
+            background-size: contain;
+            background-position-y: bottom;
+            background-repeat: no-repeat;
+            background-color: #181c32;
         }
 
         .promo-title {
@@ -78,6 +84,9 @@
             display: inline-block;
             margin-top: 10px;
         }
+        .login-img {
+            margin-bottom: 30px;
+        }
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -92,8 +101,7 @@
 <div class="login-bg">
     <div class="login-page">
         <div class="login-box">
-            <img src="https://rnd.evrika.com/storage/photos/shares/644164dcb2140.png" alt="">
-            <div class="promo-title"> Логин</div>
+            <img class="login-img" src="https://smart.ukgu.kz/images/logo4.png" alt="">
         
             <!-- /.login-logo -->
         
