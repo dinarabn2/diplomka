@@ -17,6 +17,7 @@ use App\Repositories\SpecialityRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use Illuminate\Support\Facades\Cache;
 
 class StudentController extends AppBaseController
 {
@@ -110,14 +111,15 @@ class StudentController extends AppBaseController
     {
         $inputOnly = $request->only('social_name');
         $input = $request->except('_token');
-        dd($input);
+        
         $destinationPath = public_path('files/students/');
         $data = $action->handle($request, $destinationPath);
+        
         $socialStatus = $this->socialStatus->create([
             'name' => $inputOnly['social_name'],
-            'document' => $data['document']
+            'document' => $data['file']
         ]);
-
+        
         $student = new Student();
         $student->name = $request->name;
         $student->surname = $request->surname;
@@ -132,12 +134,17 @@ class StudentController extends AppBaseController
         $student->education_type = $request->education_type;
         $student->group_id = $request->group_id;
         $student->social_status_id = $socialStatus->id;
-
+        
         $student = $student->save();
-
+        
+        $input['file'] = $data['file'];
         if (url()->previous() == $request->getSchemeAndHttpHost().'/home') {
-            return redirect()->route('thanks');
-            return redirect()->route('pdf.preview')->with();
+            Cache::put('name', $input['name']);
+            Cache::put('surname', $input['surname']);
+            Cache::put('phone', $input['phone']);
+            Cache::put('birthday', $input['birthday']);
+            Cache::put('email', $input['email']);
+            return redirect('pdf/preview')->with($input);
         }  
         else {
             Flash::success('Студент сәтті сақталды.');

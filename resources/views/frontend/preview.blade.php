@@ -36,10 +36,18 @@
                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </div>
+                    </div>
+                    <br>
+                    <div>
+                       <p>Name: {{cache('name')}}</p>
+                       <p>Surname: {{cache('surname')}}</p>
+                       <p>Phone: {{cache('phone')}}</p>
+                       <p>Birthday{{cache('birthday')}}</p>
+                       <p>Email: {{cache('email')}}</p>
+                    </div>
                 </div>
                 <div class="text-center pdf-btn">
-                  <a href="{{ route('pdf.generate') }}" class="btn btn-primary">Generate PDF</a>
+                  <a href="{{ route('pdf.generate')}}" class="btn btn-primary">Generate PDF</a>
                 </div>
             </div>
         </div>
