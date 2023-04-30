@@ -11,9 +11,9 @@
     <table class="table" id="students-table">
         <thead>
         <tr>
-            <th>№</th>
-            <th>Аты</th>
+            <th style="width: 70px;">№</th>
             <th>Тегі</th>
+            <th>Аты</th>
             <th>Туылған күні</th>
             <th>Жынысы</th>
             <th>Курсы</th>
@@ -26,8 +26,8 @@
             @foreach($students as $student)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $student->name }}</td>
                 <td>{{ $student->surname }}</td>
+                <td>{{ $student->name }}</td>
                 <td>{{ $student->birthday }}</td>
                 <td>@if ($student->gender && $gender) {{ $gender[$student->gender] }} @else 'Not data' @endif</td>
                 <td>{{ $student->course }}</td>

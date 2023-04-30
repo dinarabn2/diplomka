@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name') }} | Registration Page</title>
+    <title>Регистрация</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -23,9 +23,18 @@
           integrity="sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg=="
           crossorigin="anonymous"/>
 
+    <link rel="shortcut icon" href="https://rnd.evrika.com/storage/photos/shares/644d077191a0c.png" type="image/png">
+
     <style>
         .register-page {
-            background: #6495ED;
+            background-image: url(https://smart.ukgu.kz/assets/media/illustrations/sketchy-1/14-dark.png);
+            background-size: contain;
+            background-position-y: bottom;
+            background-repeat: no-repeat;
+            background-color: #181c32;
+        }
+        .promo-img {
+            margin-bottom: 30px;
         }
 
         .promo-title {
@@ -35,7 +44,6 @@
             text-align: center;
             color: #FFFFFF;
             text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            margin-bottom: 30px;
         }
 
         .register-box {
@@ -87,8 +95,7 @@
 <body class="hold-transition">
 <div class="register-page">
     <div class="register-box">
-        <img src="https://rnd.evrika.com/storage/photos/shares/644164dcb2140.png" alt="">
-        <div class="promo-title">Регистрация</div>
+        <img class="promo-img" src="https://smart.ukgu.kz/images/logo4.png" alt="">
     
         <div class="card">
             <div class="card-body register-card-body">

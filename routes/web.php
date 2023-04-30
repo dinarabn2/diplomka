@@ -23,6 +23,7 @@ Route::get('/home', [App\Http\Controllers\FrontController::class, 'socialStatus'
 Auth::routes();
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
 
 Route::resource('students', App\Http\Controllers\StudentController::class);
