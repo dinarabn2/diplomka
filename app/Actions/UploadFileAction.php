@@ -8,12 +8,12 @@ class UploadFileAction
     {
         $input = $request->except('_token');
 
-        if ($request->hasFile('document')) {
-            $file = $request->file('document');
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
             $originalName = $file->getClientOriginalName();
             $name = time().'_'.$originalName;
             $file->move($destinationPath, $name);
-            $input['document'] = $name;
+            $input['file'] = $name;
         }
        
         return $input;
