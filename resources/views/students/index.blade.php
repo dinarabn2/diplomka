@@ -31,6 +31,20 @@
                 <div class="col-xs-12 col-sm-6 col-lg-3">
                     <div class="form-group">
                         <select class="form-control" name="group_id">
+                            <option value="" disabled hidden selected>Факультет</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-3">
+                    <div class="form-group">
+                        <select class="form-control" name="group_id">
+                            <option value="" disabled hidden selected>Мамандық</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-3">
+                    <div class="form-group">
+                        <select class="form-control" name="group_id">
                             <option value="" disabled hidden selected>Группа</option>
                         </select>
                     </div>

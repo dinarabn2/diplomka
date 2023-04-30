@@ -45,7 +45,8 @@ class Student extends Model
         'education_type',
         'gender',
         'group_id',
-        'social_status_id'
+        'social_status_id',
+        'social_name'
     ];
 
     /**
@@ -65,7 +66,8 @@ class Student extends Model
         'education_type' => 'string',
         'gender' => 'string',
         'group_id' => 'integer',
-        'social_status_id' => 'integer' 
+        'social_status_id' => 'integer',
+        'social_name'
     ];
 
     /**

@@ -1,7 +1,7 @@
 <style>
     .show-img {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
         margin-right: 25px;
     }
     .show-row {
@@ -89,6 +89,17 @@
         <div class="card p-20">
             <h4>Әлеуметтік жағдайы:</h4>
             <br>
+            <div class="col-sm-12">
+                {!! Form::label('text', 'Әлеуметтік жағдай категориясы:') !!}
+                <p>{{ $status[$student->social_name] }}</p>
+            </div>
+            <div class="col-sm-12">
+                {!! Form::label('text', 'Жағдайы:') !!}
+                <p>{{ $student->text }}</p>
+            </div>
+            <div class="col-sm-12">
+                {!! Form::label('text', 'Файл:') !!}
+            </div>
         </div>
     </div>
     <div class="col-md-5">

@@ -162,7 +162,7 @@ class StudentController extends AppBaseController
             return redirect(route('students.index'));
         }
 
-        return view('students.show')->with(['student' => $student, 'gender' => $this->genderSelect, 'education' => $this->educationSelect]);
+        return view('students.show')->with(['student' => $student, 'gender' => $this->genderSelect, 'education' => $this->educationSelect, 'status' => $this->statusSelect]);
     }
 
     /**
@@ -180,6 +180,7 @@ class StudentController extends AppBaseController
         $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
         $genders = $this->genderSelect;
         $educations = $this->educationSelect;
+        $statuses = $this->statusSelect;
 
         if (empty($student)) {
             Flash::error('Студент табылмады.');
@@ -195,6 +196,7 @@ class StudentController extends AppBaseController
                 'groups' => $groups,
                 'genders' => $genders,
                 'educations' => $educations,
+                'statuses' => $statuses
             ]);
     }
 
