@@ -23,7 +23,8 @@ class StudentRepository extends BaseRepository
         'birthday',
         'course',
         'education_type',
-        'gender'
+        'gender',
+        'social_status_id'
     ];
 
     /**
@@ -44,12 +45,9 @@ class StudentRepository extends BaseRepository
         return Student::class;
     }
 
-    public function addStudent($request, $action)
+    public function addStudent($data)
     {
-        $destinationPath = public_path('files/students/');
-        $input = $action->handle($request, $destinationPath);
-
-        return $this->create($input);
+        return $this->create($data);
     }
 
     public function updateStudent($request, $id, $action)
