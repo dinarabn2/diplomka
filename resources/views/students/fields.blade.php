@@ -52,6 +52,7 @@
     {!! Form::label('group_id', 'Группа:') !!}
     {!! Form::select('group_id', $groups, old('group_id', $student->group->id ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз', 'required']) !!}
 </div>
+
 {{-- <div class="form-group col-sm-12">
     <textarea name="text" class="editor">{{ $student['text'] ?? null}}</textarea>
 </div>
@@ -63,20 +64,30 @@
     <a href="" class="popup_selector" data-inputid="feature_image">Суретті таңдау</a>
 </div> --}}
 
-<div class="form-group col-sm-6">
-    {!! Form::label('surname', 'Әлеуметтік жағдайы:') !!}
-    <select name="social_name" class="form-control" id="select" required>
+{{-- <div class="form-group col-sm-6">
+    {!! Form::label('social_status_id', 'Әлеуметтік жағдайы:') !!}
+    <select name="social_status_id" class="form-control" id="select" required>
         <option selected disabled hidden>Тандаңыз</option>
-        <option value="Тұл жетім">Тұл жетім</option>
-        <option value="Жетім">Жетім</option>
-        <option value="Мүгедек">Мүгедек</option>
-        <option value="Ата-анасы мүгедек">Ата-анасы мүгедек</option>
-        <option value="Көпбалалы отбасы">Көпбалалы отбасы</option>
-        <option value="Бір отбасыдан 2 немесе оданда көп студент">Бір отбасыдан 2 немесе оданда көп студент</option>
+        <option value="1">Тұл жетім</option>
+        <option value="2">Жетім</option>
+        <option value="3">Мүгедек</option>
+        <option value="4">Ата-анасы мүгедек</option>
+        <option value="5">Көпбалалы отбасы</option>
+        <option value="6">Бір отбасыдан 2 немесе оданда көп студент</option>
     </select>
+</div> --}}
+
+<div class="form-group col-sm-6">
+    {!! Form::label('social_name', 'Әлеуметтік жағдайы:') !!}
+    {!! Form::select('social_name', $statuses, old('name', $student->status ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз', 'required']) !!}
 </div>
 
 <div class="form-group col-sm-12">
+    {!! Form::label('text', 'Әлеуметтік жағдайыңыз туралы жазып өтіңіз:') !!}
+    {!! Form::textarea('text', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
+</div>
+
+{{-- <div class="form-group col-sm-12">
     <div class="status__wrapper status__wrapper-1">
         <h3 class="mt-3">Тұл жетім</h3>
         <ol class="row">
@@ -286,7 +297,7 @@
             </li>
         </ol>
     </div>
-</div>
+</div> --}}
 
 <div class="col-sm-6 mx-auto">
     <div class="form-group">

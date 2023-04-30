@@ -26,6 +26,7 @@ class CreateStudentsTable extends Migration
             $table->string('course');
             $table->string('education_type');
             $table->string('gender');
+            $table->string('social_name');
             $table->timestamps();
             $table->softDeletes();
         });
