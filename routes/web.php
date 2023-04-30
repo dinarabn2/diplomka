@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,6 @@ Route::resource('tutors', App\Http\Controllers\TutorController::class);
 Route::resource('groups', App\Http\Controllers\GroupController::class);
 
 Route::get('thanks', App\Http\Controllers\ThanksController::class)->name('thanks');
+
+Route::get('pdf/preview', [PDFController::class, 'preview'])->name('pdf.preview');
+Route::get('pdf/generate', [PDFController::class, 'generatePDF'])->name('pdf.generate');

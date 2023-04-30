@@ -109,6 +109,8 @@ class StudentController extends AppBaseController
     public function store(CreateStudentRequest $request, UploadFileAction $action)
     {
         $inputOnly = $request->only('social_name');
+        $input = $request->except('_token');
+        dd($input);
         $destinationPath = public_path('files/students/');
         $data = $action->handle($request, $destinationPath);
         $socialStatus = $this->socialStatus->create([
@@ -131,10 +133,11 @@ class StudentController extends AppBaseController
         $student->group_id = $request->group_id;
         $student->social_status_id = $socialStatus->id;
 
-        $student->save();
+        $student = $student->save();
 
         if (url()->previous() == $request->getSchemeAndHttpHost().'/home') {
             return redirect()->route('thanks');
+            return redirect()->route('pdf.preview')->with();
         }  
         else {
             Flash::success('Студент сәтті сақталды.');
