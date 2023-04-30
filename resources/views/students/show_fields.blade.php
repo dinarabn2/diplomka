@@ -91,7 +91,7 @@
             <br>
             <div class="col-sm-12">
                 {!! Form::label('text', 'Әлеуметтік жағдай категориясы:') !!}
-                <p>{{ $status[$student->social_name] }}</p>
+                <p>{{ $student->socialStatus->name ?? ''}}</p>
             </div>
             <div class="col-sm-12">
                 {!! Form::label('text', 'Жағдайы:') !!}
@@ -99,6 +99,7 @@
             </div>
             <div class="col-sm-12">
                 {!! Form::label('text', 'Файл:') !!}
+                <a href="{{ asset('files/students/' . $student->socialStatus->document) }}">{{ $student->socialStatus->document }}</a>
             </div>
         </div>
     </div>
