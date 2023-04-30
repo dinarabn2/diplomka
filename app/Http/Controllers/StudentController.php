@@ -7,6 +7,7 @@ use Response;
 use App\Models\Faculty;
 use App\Models\Student;
 use App\Models\Speciality;
+use App\Models\SocialStatus;
 use Illuminate\Http\Request;
 use App\Actions\UploadFileAction;
 use App\Repositories\GroupRepository;
@@ -26,9 +27,11 @@ class StudentController extends AppBaseController
      * 
      * @var FacultyRepository $facultyRepository
      * @var SpecialityRepository $specialityRepository
+     * @var SocialStatus $socialStatus
      */
     public $facultyRepository;
     public $specialityRepository;
+    public $socialStatus;
 
     /**
      * 
@@ -44,12 +47,13 @@ class StudentController extends AppBaseController
     public $educationSelect = [];
     public $statusSelect = [];
 
-    public function __construct(StudentRepository $studentRepo, FacultyRepository $facultyRepo, SpecialityRepository $specialityRepo, GroupRepository  $groupRepositoryRepo)
+    public function __construct(StudentRepository $studentRepo, FacultyRepository $facultyRepo, SpecialityRepository $specialityRepo, GroupRepository  $groupRepositoryRepo, SocialStatus $socialStatusRepo)
     {
         $this->studentRepository = $studentRepo;
         $this->facultyRepository = $facultyRepo;
         $this->specialityRepository = $specialityRepo;
         $this->groupRepository = $groupRepositoryRepo;
+        $this->socialStatus = $socialStatusRepo;
         $this->genderSelect = ['male' => 'Ұл', 'female' => 'Қыз'];
         $this->educationSelect = ['grant' => 'Грант', 'paid' => 'Ақылы'];
         $this->statusSelect = [
@@ -104,35 +108,38 @@ class StudentController extends AppBaseController
      */
     public function store(CreateStudentRequest $request, UploadFileAction $action)
     {
-        $input = $request->except('_token');
-
-        $student = $this->studentRepository->addStudent($request, $action);
-        
-        $socialStatus = $student->socialStatus()->create([
-            'name' => $input['name'],
-            'document' => $student['document']
+        $inputOnly = $request->only('social_name');
+        $destinationPath = public_path('files/students/');
+        $data = $action->handle($request, $destinationPath);
+        $socialStatus = $this->socialStatus->create([
+            'name' => $inputOnly['social_name'],
+            'document' => $data['document']
         ]);
-        // $student = $this->studentRepository->create($input);
 
-        return redirect()->route('thanks');
+        $student = new Student();
+        $student->name = $request->name;
+        $student->surname = $request->surname;
+        $student->phone = $request->phone;
+        $student->img = $request->img ?? NULL;
+        $student->text = $request->text ?? NULL;
+        $student->birthday = $request->birthday;
+        $student->course = $request->course;
+        $student->email = $request->email;
+        $student->education_type = $request->education_type;
+        $student->gender = $request->gender;
+        $student->education_type = $request->education_type;
+        $student->group_id = $request->group_id;
+        $student->social_status_id = $socialStatus->id;
 
-        // $student = new Student();
-        // $student->name = $request->name;
-        // $student->surname = $request->surname;
-        // $student->phone = $request->phone;
-        // $student->img = $request->img;
-        // $student->text = $request->text;
-        // $student->birthday = $request->birthday;
-        // $student->course = $request->course;
-        // $student->education_type = $request->education_type;
-        // $student->gender = $request->gender;
-        // $student->education_type = $request->education_type;
-        // $student->group_id = $request->group_id;
+        $student->save();
 
-        // $student->save();
-
-        // Flash::success('Студент сәтті сақталды.');
-        // return redirect(route('students.index'));
+        if (url()->previous() == $request->getSchemeAndHttpHost().'/home') {
+            return redirect()->route('thanks');
+        }  
+        else {
+            Flash::success('Студент сәтті сақталды.');
+            return redirect(route('students.index'));
+        }    
     }
 
     /**
