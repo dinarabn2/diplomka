@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Student;
 
-class SendNotification extends Mailable
+class AddStudentNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -31,8 +31,9 @@ class SendNotification extends Mailable
      */
     public function build()
     {
-        return $this->from('univer@edu.kz', 'Notificatiob')
+        return $this->from(config('settings.mail_from_address'), 'Notification')
             ->view('emails.notification')
+            ->subject('"Әлеуметтік қолдау" орталығы')
             ->with([
                 'name' => $this->student->name,
                 'surname' => $this->student->surname,

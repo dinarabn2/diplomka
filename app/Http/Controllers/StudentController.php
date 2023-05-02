@@ -4,20 +4,21 @@ namespace App\Http\Controllers;
 
 use Flash;
 use Response;
-use App\Models\Faculty;
 use App\Models\Student;
-use App\Models\Speciality;
 use App\Models\SocialStatus;
 use Illuminate\Http\Request;
+use App\Mail\SendNotification;
 use App\Actions\UploadFileAction;
+use App\Mail\AddStudentNotification;
+use Illuminate\Support\Facades\Mail;
 use App\Repositories\GroupRepository;
+use Illuminate\Support\Facades\Cache;
 use App\Repositories\FacultyRepository;
 use App\Repositories\StudentRepository;
 use App\Repositories\SpecialityRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
-use Illuminate\Support\Facades\Cache;
 
 class StudentController extends AppBaseController
 {
@@ -135,9 +136,12 @@ class StudentController extends AppBaseController
         $student->group_id = $request->group_id;
         $student->social_status_id = $socialStatus->id;
         
-        $student = $student->save();
+        $student->save();
         
         $input['file'] = $data['file'];
+
+        Mail::to($request)->send(new AddStudentNotification($student));
+
         if (url()->previous() == $request->getSchemeAndHttpHost().'/home') {
             Cache::put('name', $input['name']);
             Cache::put('surname', $input['surname']);
