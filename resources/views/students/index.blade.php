@@ -29,7 +29,8 @@
                             <input class=" form-control" placeholder="Тегі" title="Тегі" name="surname" type="text">
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                    {{-- @Todo Закомментировать етіп қойдым, өйткені бұлар, группамен поиск істесең, поисковый результатта болады --}}
+                    {{-- <div class="col-xs-12 col-sm-6 col-lg-3">
                         <div class="form-group">
                             <select class="form-control" name="faculty">
                                 <option value="" disabled hidden selected>Факультет</option>
@@ -42,11 +43,11 @@
                                 <option value="" disabled hidden selected>Мамандық</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
+                    {{-- End Todo --}}
                     <div class="col-xs-12 col-sm-6 col-lg-3">
                         <div class="form-group">
-                            {!! Form::label('group', 'Группа:') !!}
-                            {!! Form::select('group', $groups, null, ['class' => 'form-control', 'placeholder' => 'Тандаңыз', 'required']) !!}
+                            {!! Form::select('group', $groups, null, ['class' => 'form-control', 'placeholder' => 'Группаны тандаңыз']) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-lg-2 ">

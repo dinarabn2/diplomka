@@ -98,8 +98,12 @@
                 <p>{{ $student->text }}</p>
             </div>
             <div class="col-sm-12">
-                {!! Form::label('text', 'Файл:') !!}
-                <a href="{{ asset('files/students/' . $student->socialStatus->document) }}">{{ $student->socialStatus->document }}</a>
+                {!! Form::label('file', 'Файл:') !!}
+                @if($student->socialStatus)
+                    <a href="{{ asset('files/students/' . $student->socialStatus->document) }}">{{ $student->socialStatus->document }}</a>
+                @else
+                    <span>Файл қосылмаған</span>
+                @endif
             </div>
         </div>
     </div>
