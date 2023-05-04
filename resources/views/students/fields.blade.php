@@ -79,7 +79,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('social_name', 'Әлеуметтік жағдайы:') !!}
-    {!! Form::select('social_name', $statuses, old('name', $student->status ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз', 'required']) !!}
+    {!! Form::select('social_name', $statuses, old('name', $student->status ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз']) !!}
 </div>
 
 <div class="form-group col-sm-12">
@@ -299,6 +299,10 @@
     </div>
 </div> --}}
 
+<div class="bg-warning color-palette card-text">
+     * Жоғарыда көрсетілген категориялар бойынша, барлық құжаттарды бір файл ретінде .pdf форматында жүктеңіз.
+</div>
+
 <div class="col-sm-6 mx-auto">
     <div class="form-group">
         <label class="input-file">
@@ -311,52 +315,52 @@
 
 <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
 <script>
-const select = document.getElementById('select');
-    const docBlocks = document.querySelectorAll('.status__wrapper');
+// const select = document.getElementById('select');
+//     const docBlocks = document.querySelectorAll('.status__wrapper');
 
-    function hiddenBlock() {
-        docBlocks.forEach(doc => {
-            doc.style.display = 'none';
-        });
-    }
+//     function hiddenBlock() {
+//         docBlocks.forEach(doc => {
+//             doc.style.display = 'none';
+//         });
+//     }
 
-    hiddenBlock();
+//     hiddenBlock();
 
-    let lastCounter = 0;
+    // let lastCounter = 0;
 
-    select.addEventListener('change', () => {
-        const getValue = select.value;
-        console.log(getValue);
+    // select.addEventListener('change', () => {
+    //     const getValue = select.value;
+    //     console.log(getValue);
 
-        switch (getValue) {
-            case 'Тұл жетім':
-                hiddenBlock();
-                document.querySelector('.status__wrapper-1').style.display = 'block';
-                break;
-            case 'Жетім':
-                hiddenBlock();
-                document.querySelector('.status__wrapper-2').style.display = 'block';
-                break;
-            case 'Мүгедек':
-                hiddenBlock();
-                document.querySelector('.status__wrapper-3').style.display = 'block';
-                break;
-            case 'Ата-анасы мүгедек':
-                hiddenBlock();
-                document.querySelector('.status__wrapper-4').style.display = 'block';
-                break;
-            case 'Көпбалалы отбасы':
-                hiddenBlock();
-                document.querySelector('.status__wrapper-5').style.display = 'block';
-                break;
-            case 'Бір отбасыдан 2 немесе оданда көп студент':
-                hiddenBlock();
-                document.querySelector('.status__wrapper-6').style.display = 'block';
-                break;
-            default:
-                break;
-        }
-    });
+    //     switch (getValue) {
+    //         case 'Тұл жетім':
+    //             hiddenBlock();
+    //             document.querySelector('.status__wrapper-1').style.display = 'block';
+    //             break;
+    //         case 'Жетім':
+    //             hiddenBlock();
+    //             document.querySelector('.status__wrapper-2').style.display = 'block';
+    //             break;
+    //         case 'Мүгедек':
+    //             hiddenBlock();
+    //             document.querySelector('.status__wrapper-3').style.display = 'block';
+    //             break;
+    //         case 'Ата-анасы мүгедек':
+    //             hiddenBlock();
+    //             document.querySelector('.status__wrapper-4').style.display = 'block';
+    //             break;
+    //         case 'Көпбалалы отбасы':
+    //             hiddenBlock();
+    //             document.querySelector('.status__wrapper-5').style.display = 'block';
+    //             break;
+    //         case 'Бір отбасыдан 2 немесе оданда көп студент':
+    //             hiddenBlock();
+    //             document.querySelector('.status__wrapper-6').style.display = 'block';
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    // });
     const mask = (selector) => {
 
     let setCursorPosition = (pos, elem) => {

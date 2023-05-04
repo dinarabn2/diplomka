@@ -82,10 +82,17 @@
             <div class="col-sm-12">
                 {!! Form::label('tutor_id', 'Куратор:') !!}
                 <p>{{ $student->group->tutor->name }}</p>
-            </div>
+            </div>  
         </div>
     </div>
     <div class="col-md-7">
+        <div class="card p-20">
+            <h4>Өтініш:</h4>
+            <br>
+            @include('frontend.preview')
+        </div>
+    </div>
+    <div class="col-md-5">
         <div class="card p-20">
             <h4>Әлеуметтік жағдайы:</h4>
             <br>
@@ -101,12 +108,6 @@
                 {!! Form::label('text', 'Файл:') !!}
                 <a href="{{ asset('files/students/' . $student->socialStatus->document) }}">{{ $student->socialStatus->document }}</a>
             </div>
-        </div>
-    </div>
-    <div class="col-md-5">
-        <div class="card p-20">
-            <h4>Өтініш:</h4>
-            <br>
         </div>
     </div>
 </div>

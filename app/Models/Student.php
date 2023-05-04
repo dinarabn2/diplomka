@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Eloquent as Model;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -67,7 +68,7 @@ class Student extends Model
         'gender' => 'string',
         'group_id' => 'integer',
         'social_status_id' => 'integer',
-        'social_name'
+        'social_name' => 'string'
     ];
 
     /**
@@ -85,7 +86,8 @@ class Student extends Model
         'education_type' => 'required',
         'gender' => 'required',
         'group_id' => 'required',
-        'social_status_id' => 'nullable'
+        'social_status_id' => 'nullable',
+        'social_name' => 'nullable'
     ];
 
     public function faculty()

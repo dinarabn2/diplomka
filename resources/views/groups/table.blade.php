@@ -13,6 +13,8 @@
         <tr>
             <th style="width: 70px;">№</th>
             <th>Аты</th>
+            <th>Факультет</th>
+            <th>Мамандық</th>
             <th>Куратор</th>
             <th colspan="3">Өзгерту</th>
         </tr>
@@ -22,6 +24,8 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $group->name }}</td>
+                <td>{{ $group->faculty->name }}</td>
+                <td>{{ $group->speciality->name }}</td>
                 <td>{{ $group->tutor->name }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['groups.destroy', $group->id], 'method' => 'delete']) !!}

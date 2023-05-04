@@ -1,7 +1,8 @@
 <html>
 <head>
-    <title>Generate PDF Laravel 8 - phpcodingstuff.com</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="https://rnd.evrika.com/storage/photos/shares/644d077191a0c.png" type="image/png">
+    <title>Өтініш | Әлеуметтік қолдау</title>
 </head>
 <style type="text/css">
     h2{
@@ -20,34 +21,58 @@
     .pdf-btn{
         margin-top:30px;
     }
+
+    .panel-heading {
+        text-align: right;
+    }
+    .panel-heading div {
+        font-size: 20px;
+        font-weight: normal;
+    }
+    .panel-title {
+        text-align: center;
+        margin-top: 100px;
+        font-size: 34px;
+        font-weight: 600;
+    }
+    .main-div {
+        font-size: 18px;
+    }
+    .main-div span {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .panel-btm {
+        text-align: right;
+        margin-top: 22px;
+        font-size: 16px;
+        font-weight: 500;
+    }
 </style>    
 <body>
     <div class="container">
-        <div class="col-md-8 section offset-md-2">
+        <div class="@if (Route::currentRouteName() == 'pdf.preview') section @endif">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h2>Laravel 8 Generate PDF - phpcodingstuff.com</h2>
+                    <div>Мұхтар Әуезов атындағы ОҚУ ректоры</div>
+                    <div>Қожамжарова Дария Пернешқызына</div>
+                    <div>ИП-19-3к1 тобынан</div>
+                    <div>{{cache('surname') }} {{ cache('name') }}</div>
                 </div>
+                <div class="panel-title">Өтініш</div>
                 <div class="panel-body">
                     <div class="main-div">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Мен, <span>{{cache('surname')}} {{cache('name')}}</span> ИП-19-3к1 тобынан, 
+                        әлеуметтік жағдайыма байланысты <span>көпбалалы отбасынан</span> болғандықтан, оқу ақысына жеңілдік беруіңізді сұранамын.
                     </div>
                     <br>
-                    <div>
-                       <p>Name: {{cache('name')}}</p>
-                       <p>Surname: {{cache('surname')}}</p>
-                       <p>Phone: {{cache('phone')}}</p>
-                       <p>Birthday{{cache('birthday')}}</p>
-                       <p>Email: {{cache('email')}}</p>
-                    </div>
+                    <div class="panel-btm">Аты-жөні: <span>{{cache('surname')}} {{cache('name')}}</span></div>
                 </div>
                 <div class="text-center pdf-btn">
-                  <a href="{{ route('pdf.generate')}}" class="btn btn-primary">Generate PDF</a>
+                  {{-- <a href="{{ route('pdf.generate')}}" class="btn btn-primary">Өтінішті жүктеп алу</a> --}}
+                  @if (Route::currentRouteName() == 'pdf.preview')
+                    <a href="{{ route('thanks')}}" class="btn btn-primary">Келесі</a>
+                  @endif
                 </div>
             </div>
         </div>

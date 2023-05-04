@@ -13,16 +13,18 @@
         <tr>
             <th style="width: 70px;">№</th>
             <th>Аты</th>
+            <th>Факультет</th>
             <th>Шифр</th>
             <th colspan="3">Өзгерту</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($specialities as $speciality)
+            @foreach($specialities as $speciality)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $speciality->name }}</td>
-            <td>{{ $speciality->cipher }}</td>
+                <td>{{ $speciality->faculty->name }}</td>
+                <td>{{ $speciality->cipher }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['specialities.destroy', $speciality->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

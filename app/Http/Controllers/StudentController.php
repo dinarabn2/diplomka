@@ -77,10 +77,13 @@ class StudentController extends AppBaseController
     public function index(Request $request)
     {
         // $students = $this->studentRepository->all();
+        $faculties = $this->facultyRepository->makeModel()->pluck('name', 'id');
+        $specialities = $this->specialityRepository->makeModel()->pluck('name', 'id');
+        $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
         $students = Student::orderBy('surname')->get();
 
         return view('students.index')
-            ->with(['students' => $students, 'gender' => $this->genderSelect, 'education' => $this->educationSelect, 'status' => $this->statusSelect ]);
+            ->with(['students' => $students, 'gender' => $this->genderSelect, 'education' => $this->educationSelect, 'status' => $this->statusSelect, 'groups' => $groups, 'faculties' => $faculties, 'specialities' => $specialities]);
     }
 
     /**
@@ -134,7 +137,6 @@ class StudentController extends AppBaseController
         $student->education_type = $request->education_type;
         $student->group_id = $request->group_id;
         $student->social_status_id = $socialStatus->id;
-        
         $student = $student->save();
         
         $input['file'] = $data['file'];
@@ -144,6 +146,7 @@ class StudentController extends AppBaseController
             Cache::put('phone', $input['phone']);
             Cache::put('birthday', $input['birthday']);
             Cache::put('email', $input['email']);
+            Cache::put('group', $input['group_id']);
             return redirect('pdf/preview')->with($input);
         }  
         else {
