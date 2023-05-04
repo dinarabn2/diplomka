@@ -77,11 +77,27 @@ class StudentController extends AppBaseController
      */
     public function index(Request $request)
     {
-        // $students = $this->studentRepository->all();
-        $students = Student::orderBy('surname')->get();
+        $students = null;
+        switch ($request->query()) {
+            case !empty($request->name):
+                $students = Student::where('name', 'like', "%{$request->name}%")->with('group')->orderBy('name')->get();
+                break;
+            case !empty($request->surname):
+                $students = Student::where('name', 'like', "%{$request->surname}%")->with('group')->orderBy('surname')->get();
+                break;
+            case !empty($request->group):
+                $students = Student::whereHas('group', function ($query) use ($request) {
+                    $query->where('id', $request->group);
+                })->get(); 
+                break;   
+            default:
+                $students = Student::orderBy('surname')->get();
+        }
+
+        $groups = $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
 
         return view('students.index')
-            ->with(['students' => $students, 'gender' => $this->genderSelect, 'education' => $this->educationSelect, 'status' => $this->statusSelect ]);
+            ->with(['students' => $students, 'gender' => $this->genderSelect, 'education' => $this->educationSelect, 'status' => $this->statusSelect, 'groups' => $groups ]);
     }
 
     /**
@@ -260,5 +276,18 @@ class StudentController extends AppBaseController
         Flash::success('Студент жойылды.');
 
         return redirect(route('students.index'));
+    }
+
+    public function search(Request $request)
+    {
+        dd($request->name);
+        $searchQuery = 'ИП-19-3k1';
+        
+        $students = Student::whereHas('group', function ($query) use ($searchQuery) {
+            $query->where('name', 'like', '%'.$searchQuery.'%');
+        })->get();
+
+        return view('students.index')
+            ->with(['students' => $students, 'gender' => $this->genderSelect, 'education' => $this->educationSelect, 'status' => $this->statusSelect ]);
     }
 }

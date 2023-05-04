@@ -17,45 +17,46 @@
         </div>
 
         <div class="card card-body pb-0">
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <input class=" form-control" placeholder="Тегі" title="Тегі" name="surname" type="text">
+            <form method="GET" action="{{ route('students.index') }}">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="form-group">
+                            <input class=" form-control" placeholder="Аты" title="Аты" name="name" type="text">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="form-group">
+                            <input class=" form-control" placeholder="Тегі" title="Тегі" name="surname" type="text">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="form-group">
+                            <select class="form-control" name="faculty">
+                                <option value="" disabled hidden selected>Факультет</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="form-group">
+                            <select class="form-control" name="speciality">
+                                <option value="" disabled hidden selected>Мамандық</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="form-group">
+                            {!! Form::label('group', 'Группа:') !!}
+                            {!! Form::select('group', $groups, null, ['class' => 'form-control', 'placeholder' => 'Тандаңыз', 'required']) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-2 ">
+                        <div class="filter-control-buttons">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>&nbsp;Іздеу</button>
+                            <a href="{{ route('students.index', ['filter_reset' => 1]) }}" class="btn btn-outline-secondary" title="" data-toggle="tooltip" data-original-title="Очистить фильтр"><i class="fa fa-eraser"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <input class=" form-control" placeholder="Аты" title="Аты" name="name" type="text">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <select class="form-control" name="group_id">
-                            <option value="" disabled hidden selected>Факультет</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <select class="form-control" name="group_id">
-                            <option value="" disabled hidden selected>Мамандық</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <select class="form-control" name="group_id">
-                            <option value="" disabled hidden selected>Группа</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-2 ">
-                    <div class="filter-control-buttons">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>&nbsp;Іздеу</button>
-                        <a href="#" class="btn btn-outline-secondary" title="" data-toggle="tooltip" data-original-title="Очистить фильтр"><i class="fa fa-eraser"></i></a>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </section>
 
