@@ -17,7 +17,7 @@
         </div>
 
         <div class="card card-body pb-0">
-            <form>
+            <form method="GET" action="{{ route('students.index') }}">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-lg-3">
                         <div class="form-group">
@@ -29,40 +29,31 @@
                             <input class=" form-control" placeholder="Аты" title="Аты" name="name" type="text">
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                    {{-- @Todo Закомментировать етіп қойдым, өйткені бұлар, группамен поиск істесең, поисковый результатта болады --}}
+                    {{-- <div class="col-xs-12 col-sm-6 col-lg-3">
                         <div class="form-group">
-                            <select class="form-control" name="group_id">
+                            <select class="form-control" name="faculty">
                                 <option value="" disabled hidden selected>Факультет</option>
-                                @foreach ($faculties as $faculty)
-                                    <option value="{{$faculty}}">{{ $faculty }}</option>
-                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-lg-3">
                         <div class="form-group">
-                            <select class="form-control" name="group_id">
+                            <select class="form-control" name="speciality">
                                 <option value="" disabled hidden selected>Мамандық</option>
-                                @foreach ($specialities as $speciality)
-                                    <option value="{{ $speciality }}">{{ $speciality }}</option>
-                                @endforeach
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
+                    {{-- End Todo --}}
                     <div class="col-xs-12 col-sm-6 col-lg-3">
                         <div class="form-group">
-                            <select class="form-control" name="group_id">
-                                <option value="" disabled hidden selected>Группа</option>
-                                @foreach ($groups as $group)
-                                    <option value="{{ $group }}">{{ $group }}</option>
-                                @endforeach
-                            </select>
+                            {!! Form::select('group', $groups, null, ['class' => 'form-control', 'placeholder' => 'Группаны тандаңыз']) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-lg-2 ">
                         <div class="filter-control-buttons">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>&nbsp;Іздеу</button>
-                            <a href="#" class="btn btn-outline-secondary" title="" data-toggle="tooltip" data-original-title="Очистить фильтр"><i class="fa fa-eraser"></i></a>
+                            <a href="{{ route('students.index', ['filter_reset' => 1]) }}" class="btn btn-outline-secondary" title="" data-toggle="tooltip" data-original-title="Очистить фильтр"><i class="fa fa-eraser"></i></a>
                         </div>
                     </div>
                 </div>

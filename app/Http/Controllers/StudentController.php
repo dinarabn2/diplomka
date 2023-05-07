@@ -4,20 +4,21 @@ namespace App\Http\Controllers;
 
 use Flash;
 use Response;
-use App\Models\Faculty;
 use App\Models\Student;
-use App\Models\Speciality;
 use App\Models\SocialStatus;
 use Illuminate\Http\Request;
+use App\Mail\SendNotification;
 use App\Actions\UploadFileAction;
+use App\Mail\AddStudentNotification;
+use Illuminate\Support\Facades\Mail;
 use App\Repositories\GroupRepository;
+use Illuminate\Support\Facades\Cache;
 use App\Repositories\FacultyRepository;
 use App\Repositories\StudentRepository;
 use App\Repositories\SpecialityRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
-use Illuminate\Support\Facades\Cache;
 
 class StudentController extends AppBaseController
 {
@@ -76,14 +77,27 @@ class StudentController extends AppBaseController
      */
     public function index(Request $request)
     {
-        // $students = $this->studentRepository->all();
-        $faculties = $this->facultyRepository->makeModel()->pluck('name', 'id');
-        $specialities = $this->specialityRepository->makeModel()->pluck('name', 'id');
-        $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
-        $students = Student::orderBy('surname')->get();
+        $students = null;
+        switch ($request->query()) {
+            case !empty($request->name):
+                $students = Student::where('name', 'like', "%{$request->name}%")->with('group')->orderBy('name')->paginate(config('settings.students.paginate'));
+                break;
+            case !empty($request->surname):
+                $students = Student::where('surname', 'like', "%{$request->surname}%")->with('group')->orderBy('surname')->paginate(config('settings.students.paginate'));
+                break;
+            case !empty($request->group):
+                $students = Student::whereHas('group', function ($query) use ($request) {
+                    $query->where('id', $request->group);
+                })->paginate(config('settings.students.paginate')); 
+                break;   
+            default:
+                $students = Student::orderBy('name')->paginate(config('settings.students.paginate'));
+        }
+        
+        $groups = $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
 
         return view('students.index')
-            ->with(['students' => $students, 'gender' => $this->genderSelect, 'education' => $this->educationSelect, 'status' => $this->statusSelect, 'groups' => $groups, 'faculties' => $faculties, 'specialities' => $specialities]);
+            ->with(['students' => $students, 'gender' => $this->genderSelect, 'education' => $this->educationSelect, 'status' => $this->statusSelect, 'groups' => $groups ]);
     }
 
     /**
@@ -137,9 +151,13 @@ class StudentController extends AppBaseController
         $student->education_type = $request->education_type;
         $student->group_id = $request->group_id;
         $student->social_status_id = $socialStatus->id;
-        $student = $student->save();
+        
+        $student->save();
         
         $input['file'] = $data['file'];
+
+        Mail::to($request)->send(new AddStudentNotification($student));
+
         if (url()->previous() == $request->getSchemeAndHttpHost().'/home') {
             Cache::put('name', $input['name']);
             Cache::put('surname', $input['surname']);
@@ -259,5 +277,18 @@ class StudentController extends AppBaseController
         Flash::success('Студент жойылды.');
 
         return redirect(route('students.index'));
+    }
+
+    public function search(Request $request)
+    {
+        dd($request->name);
+        $searchQuery = 'ИП-19-3k1';
+        
+        $students = Student::whereHas('group', function ($query) use ($searchQuery) {
+            $query->where('name', 'like', '%'.$searchQuery.'%');
+        })->get();
+
+        return view('students.index')
+            ->with(['students' => $students, 'gender' => $this->genderSelect, 'education' => $this->educationSelect, 'status' => $this->statusSelect ]);
     }
 }
