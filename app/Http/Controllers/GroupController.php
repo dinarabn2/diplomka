@@ -6,6 +6,7 @@ use App\Http\Requests\CreateGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
 use App\Repositories\GroupRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Group;
 use App\Repositories\TutorRepository;
 use App\Repositories\FacultyRepository;
 use App\Repositories\SpecialityRepository;
@@ -38,10 +39,30 @@ class GroupController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $groups = $this->groupRepository->all();
+        $groups = null;
+        switch ($request->query()) {
+            case !empty($request->name):
+                $groups = Group::where('name', 'like', "%{$request->name}%")->orderBy('name')->paginate(config('settings.groups.paginate'));
+                break;
+            case !empty($request->faculty):
+                $groups = Group::whereHas('faculty', function ($query) use ($request) {
+                    $query->where('id', $request->faculty);
+                })->paginate(config('settings.groups.paginate')); 
+                break;   
+            case !empty($request->speciality):
+                $groups = Group::whereHas('speciality', function ($query) use ($request) {
+                    $query->where('id', $request->speciality);
+                })->paginate(config('settings.groups.paginate')); 
+                break;   
+            default:
+                $groups = Group::orderBy('name')->paginate(config('settings.groups.paginate'));
+        }
+        
+        $faculties = $this->facultyRepository->makeModel()->pluck('name', 'id');
+        $specialities = $this->specialityRepository->makeModel()->pluck('name', 'id');
 
         return view('groups.index')
-            ->with('groups', $groups);
+            ->with(['groups'=> $groups, 'faculties' => $faculties, 'specialities' => $specialities]);
     }
 
     /**

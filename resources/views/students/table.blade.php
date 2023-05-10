@@ -56,7 +56,7 @@
         {{ $students->appends(['name' => request()->name, 'surname' => request()->surname, 'group' => request()->group])->links() }}
     @else
         <div class="alert alert-warning" role="alert">
-            <p>Entries not found</p>
+            <p>Жазбалар табылмады</p>
         </div>
     @endif
 </div>

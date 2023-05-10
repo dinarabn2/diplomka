@@ -7,53 +7,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="shortcut icon" href="https://rnd.evrika.com/storage/photos/shares/644d077191a0c.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap" rel="stylesheet">
     <title>Әлеуметтік қолдау</title>
-
-    <style>
-        body {
-            background: #181c32;
-            overflow-x: hidden;
-        }
-        
-    .home-bg {
-        height: 100vh;
-        color: #FFFFFF;
-        background-image: url(https://smart.ukgu.kz/assets/media/illustrations/sketchy-1/14-dark.png);
-        background-size: contain;
-        background-position-y: bottom;
-        background-repeat: no-repeat;
-        background-color: #181c32;
-    }
-    .home-wrapper {
-        height: 100vh;
-        position: relative;
-        display: flex;
-        gap: 40px;
-    }
-    .home-title {
-        font-weight: 600;
-        font-size: 76px;
-        color: #FFFFFF;
-    }
-    .home-descr {
-        font-weight: 600;
-        font-size: 28px;
-        color: #FFFFFF;
-    }
-    .home-block {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-        justify-content: center;
-    }
-    .home-img {
-        margin: 100px 0 0;
-        height: 87vh;
-    }
-    .btn {
-        width: 180px;
-    }
-    </style>
 </head>
 <body>
     @yield('content')

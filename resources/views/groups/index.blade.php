@@ -15,6 +15,34 @@
                 </div>
             </div>
         </div>
+
+        <div class="card card-body pb-0">
+            <form method="GET" action="{{ route('groups.index') }}">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="form-group">
+                            <input class=" form-control" placeholder="Топтың аты" title="Топ" name="name" type="text">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="form-group">
+                            {!! Form::select('faculty', $faculties, null, ['class' => 'form-control', 'placeholder' => 'Факультетті тандаңыз']) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="form-group">
+                            {!! Form::select('speciality', $specialities, null, ['class' => 'form-control', 'placeholder' => 'Мамандықты тандаңыз']) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-2 ">
+                        <div class="filter-control-buttons">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>&nbsp;Іздеу</button>
+                            <a href="{{ route('groups.index', ['filter_reset' => 1]) }}" class="btn btn-outline-secondary" title="" data-toggle="tooltip" data-original-title="Очистить фильтр"><i class="fa fa-eraser"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </section>
 
     <div class="content px-3">
