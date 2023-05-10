@@ -164,6 +164,7 @@ class StudentController extends AppBaseController
             Cache::put('phone', $input['phone']);
             Cache::put('birthday', $input['birthday']);
             Cache::put('email', $input['email']);
+            
             return redirect('pdf/preview')->with($input);
         }  
         else {
