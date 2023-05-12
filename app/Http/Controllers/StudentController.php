@@ -112,7 +112,11 @@ class StudentController extends AppBaseController
         $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
         $genders = $this->genderSelect;
         $educations = $this->educationSelect;
-        $statuses = $this->statusSelect;
+        $statuses = [];
+
+        foreach ($this->statusSelect as $key => $status) {
+            $statuses[$status] = $status;
+        };
 
         return view('students.create', compact('faculties', 'specialities', 'groups', 'genders', 'educations', 'statuses'));
     }
