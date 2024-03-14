@@ -1,5 +1,4 @@
  <div>
-    <p>Student name: <strong>{{ $name }}</strong></p>
-    <p>Student surname: <strong>{{ $surname }}</strong></p>
-    <p>Student email: <strong>{{ $email }}</strong></p>
+    <p><strong>{{ $surname }} {{ $name }}</strong>, сіздің өтінішіңіз қабылданды.</p>
+    <p>Сізге міндетті түрде хабарласамыз. Жауапты телефон қоңырауы арқылы күтіңіз.</p>
 </div>

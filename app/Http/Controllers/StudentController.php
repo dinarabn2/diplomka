@@ -80,10 +80,10 @@ class StudentController extends AppBaseController
         $students = null;
         switch ($request->query()) {
             case !empty($request->name):
-                $students = Student::where('name', 'like', "%{$request->name}%")->with('group')->orderBy('name')->paginate(config('settings.students.paginate'));
+                $students = Student::where('name', 'like', "%{$request->name}%")->with('group')->orderBy('id')->paginate(config('settings.students.paginate'));
                 break;
             case !empty($request->surname):
-                $students = Student::where('surname', 'like', "%{$request->surname}%")->with('group')->orderBy('surname')->paginate(config('settings.students.paginate'));
+                $students = Student::where('surname', 'like', "%{$request->surname}%")->with('group')->orderBy('id')->paginate(config('settings.students.paginate'));
                 break;
             case !empty($request->group):
                 $students = Student::whereHas('group', function ($query) use ($request) {
@@ -91,7 +91,7 @@ class StudentController extends AppBaseController
                 })->paginate(config('settings.students.paginate')); 
                 break;   
             default:
-                $students = Student::orderBy('name')->paginate(config('settings.students.paginate'));
+                $students = Student::orderBy('id')->paginate(config('settings.students.paginate'));
         }
         
         $groups = $groups = $this->groupRepository->makeModel()->pluck('name', 'id');

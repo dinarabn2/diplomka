@@ -66,7 +66,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('social_name', 'Әлеуметтік жағдайы:') !!}
-    {!! Form::select('social_name', $statuses, old('name', $student->status ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз']) !!}
+    {!! Form::select('social_name', $statuses, old('name', $student->socialStatus->name ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз']) !!}
 </div>
 
 <div class="form-group col-sm-12">

@@ -2,7 +2,7 @@
 
 @section('content')
 <style>
-    
+
 
 </style>
 
@@ -10,13 +10,15 @@
     <div class="container header__wrapper">
         <img class="header__img" src="https://smart.ukgu.kz/images/logo4.png" alt="">
         <div class="header__block">
-            <a class="header__link" href="#">Біз жайлы</a>
-            <a class="header__link" href="#">Университет жайлы</a>
-            <a class="header__link" href="#">Әлеуметтік жағдай категориялары</a>
-            <a class="header__link" href="#">Өтініш қалдыру формасы</a>
+            <a class="header__link" href="#about">Біз жайлы</a>
+            <a class="header__link" href="#university">Университет жайлы</a>
+            <a class="header__link" href="#category">Әлеуметтік жағдай категориялары</a>
+            <a class="header__link" href="#form">Өтініш қалдыру формасы</a>
         </div>
 
-        <button class="header__btn">Кіру</button>
+        <a href="/login">
+            <button class="header__btn">Кіру</button>
+        </a>
     </div>
 </header>
 
@@ -26,7 +28,7 @@
             <div class="home-subtitle">Үздік</div>
             <h1 class="home-title">Әлеуметтік қолдау</h1>
             <div class="home-descr">
-                М. Әуезов атындағы Әлеуметтік қолдау порталы. 
+                М. Әуезов атындағы Әлеуметтік қолдау порталы.
                 Сізді әрқашан қолдауға дайынбыз!
             </div>
             <a href="#form" class="home-btn mx-auto">Өтініш қалдыру</a>
@@ -37,7 +39,7 @@
 {{-- Start --}}
 
 <div class="container">
-    <section class="about">
+    <section class="about" id="about">
         <div class="about__wrapper">
             <div class="about__text">
                 <div class="about__title mb-10">Біз жайлы</div>
@@ -52,7 +54,7 @@
         </div>
     </section>
 
-    <section class="about">
+    <section class="about" id="university">
         <div class="about__wrapper">
             <img class="about__img" src="https://cdn.dribbble.com/users/6051/screenshots/4165238/coderdojo.png?compress=1&resize=800x600&vertical=top" alt="">
             <div class="about__text">
@@ -63,7 +65,7 @@
         </div>
     </section>
 
-    <section>
+    <section id="category">
         <h2 class="category-title">Әлеуметтік жағдай категориялары:</h2>
         <div class="row">
             <div class="col-md-4">
@@ -91,7 +93,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
@@ -118,7 +120,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
@@ -144,7 +146,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
@@ -171,7 +173,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
@@ -243,11 +245,11 @@
                     <h4>Меню —</h4>
                     <div class="col-md-12">
                         <ul class="pages">
-                            <li><a href="#">Біз жайлы</a></li>
-                            <li><a href="#">Университет жайлы</a></li>
-                            <li><a href="#">Әлеуметтік жағдай категориялары</a></li>
-                            <li><a href="#">Өтініш қалдыру формасы</a></li>
-                            <li><a href="#">Университет сайты</a></li>
+                            <li><a href="#about">Біз жайлы</a></li>
+                            <li><a href="#university">Университет жайлы</a></li>
+                            <li><a href="#category">Әлеуметтік жағдай категориялары</a></li>
+                            <li><a href="#form">Өтініш қалдыру формасы</a></li>
+                            <li><a href="https://auezov.edu.kz/kaz/">Университет сайты</a></li>
                         </ul>
                     </div>
                 </div>
