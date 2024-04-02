@@ -26,7 +26,7 @@ class StudentController extends AppBaseController
     public $studentRepository;
 
     /**
-     * 
+     *
      * @var FacultyRepository $facultyRepository
      * @var SpecialityRepository $specialityRepository
      * @var SocialStatus $socialStatus
@@ -36,13 +36,13 @@ class StudentController extends AppBaseController
     public $socialStatus;
 
     /**
-     * 
+     *
      * @var GroupRepository
      */
     public $groupRepository;
 
     /**
-     * 
+     *
      * @var array
      */
     public $genderSelect = [];
@@ -88,12 +88,12 @@ class StudentController extends AppBaseController
             case !empty($request->group):
                 $students = Student::whereHas('group', function ($query) use ($request) {
                     $query->where('id', $request->group);
-                })->paginate(config('settings.students.paginate')); 
-                break;   
+                })->paginate(config('settings.students.paginate'));
+                break;
             default:
                 $students = Student::orderBy('id')->paginate(config('settings.students.paginate'));
         }
-        
+
         $groups = $groups = $this->groupRepository->makeModel()->pluck('name', 'id');
 
         return view('students.index')
@@ -132,32 +132,32 @@ class StudentController extends AppBaseController
     {
         $inputOnly = $request->only('social_name');
         $input = $request->except('_token');
-        
+
         $destinationPath = public_path('files/students/');
         $data = $action->handle($request, $destinationPath);
-        
+
         $socialStatus = $this->socialStatus->create([
             'name' => $inputOnly['social_name'],
             'document' => $data['file']
         ]);
-        
+
         $student = new Student();
         $student->name = $request->name;
         $student->surname = $request->surname;
         $student->phone = $request->phone;
         $student->img = $request->img ?? NULL;
         $student->text = $request->text ?? NULL;
-        $student->birthday = $request->birthday;
+        $student->birthday = $request->birthday ?? "";
         $student->course = $request->course;
         $student->email = $request->email;
         $student->education_type = $request->education_type;
-        $student->gender = $request->gender;
+        $student->gender = $request->gender ?? "male";
         $student->education_type = $request->education_type;
         $student->group_id = $request->group_id;
         $student->social_status_id = $socialStatus->id;
-        
+
         $student->save();
-        
+
         $input['file'] = $data['file'];
 
         Mail::to($request)->send(new AddStudentNotification($student));
@@ -166,15 +166,15 @@ class StudentController extends AppBaseController
             Cache::put('name', $input['name']);
             Cache::put('surname', $input['surname']);
             Cache::put('phone', $input['phone']);
-            Cache::put('birthday', $input['birthday']);
+            // Cache::put('birthday', $input['birthday']);
             Cache::put('email', $input['email']);
-            
-            return redirect('pdf/preview')->with($input);
-        }  
+
+            return redirect('thanks');
+        }
         else {
-            Flash::success('Студент сәтті сақталды.');
+            Flash::success('Тапсырыс сәтті сақталды.');
             return redirect(route('students.index'));
-        }    
+        }
     }
 
     /**
@@ -189,7 +189,7 @@ class StudentController extends AppBaseController
         $student = $this->studentRepository->find($id);
 
         if (empty($student)) {
-            Flash::error('Студент табылмады.');
+            Flash::error('Тапсырыс табылмады.');
 
             return redirect(route('students.index'));
         }
@@ -215,16 +215,16 @@ class StudentController extends AppBaseController
         $statuses = $this->statusSelect;
 
         if (empty($student)) {
-            Flash::error('Студент табылмады.');
+            Flash::error('Тапсырыс табылмады.');
 
             return redirect(route('students.index'));
         }
 
         return view('students.edit')->with(
             [
-                'student' => $student, 
-                'faculties' => $faculties, 
-                'specialities' => $specialities, 
+                'student' => $student,
+                'faculties' => $faculties,
+                'specialities' => $specialities,
                 'groups' => $groups,
                 'genders' => $genders,
                 'educations' => $educations,
@@ -245,14 +245,14 @@ class StudentController extends AppBaseController
         $student = $this->studentRepository->find($id);
 
         if (empty($student)) {
-            Flash::error('Студент табылмады.');
+            Flash::error('Тапсырыс табылмады.');
 
             return redirect(route('students.index'));
         }
 
         $student = $this->studentRepository->update($request->all(), $id);
 
-        Flash::success('Студент сәтті жаңартылды.');
+        Flash::success('Тапсырыс сәтті жаңартылды.');
 
         return redirect(route('students.index'));
     }
@@ -271,14 +271,14 @@ class StudentController extends AppBaseController
         $student = $this->studentRepository->find($id);
 
         if (empty($student)) {
-            Flash::error('Студент табылмады.');
+            Flash::error('Тапсырыс табылмады.');
 
             return redirect(route('students.index'));
         }
 
         $this->studentRepository->delete($id);
 
-        Flash::success('Студент жойылды.');
+        Flash::success('Тапсырыс жойылды.');
 
         return redirect(route('students.index'));
     }
@@ -287,7 +287,7 @@ class StudentController extends AppBaseController
     {
         dd($request->name);
         $searchQuery = 'ИП-19-3k1';
-        
+
         $students = Student::whereHas('group', function ($query) use ($searchQuery) {
             $query->where('name', 'like', '%'.$searchQuery.'%');
         })->get();

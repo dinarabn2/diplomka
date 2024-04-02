@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Студенттер</h1>
+                    <h1>Тапсырыстар</h1>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
                        href="{{ route('students.create') }}">
-                        Жаңа студентті енгізу
+                        Жаңа тапсырысты енгізу
                     </a>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     {{-- End Todo --}}
                     <div class="col-xs-12 col-sm-6 col-lg-3">
                         <div class="form-group">
-                            {!! Form::select('group', $groups, null, ['class' => 'form-control', 'placeholder' => 'Группаны тандаңыз']) !!}
+                            {!! Form::select('group', $groups, null, ['class' => 'form-control', 'placeholder' => 'Тапсырысты тандаңыз']) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-lg-2 ">
@@ -73,7 +73,7 @@
 
                 <div class="card-footer clearfix">
                     <div class="float-right">
-                        
+
                     </div>
                 </div>
             </div>

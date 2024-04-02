@@ -1,7 +1,7 @@
 <li class="nav-item">
     <a href="{{ route('faculties.index') }}"
        class="nav-link {{ Request::is('faculties*') ? 'active' : '' }}">
-        <p>Факультеттер тізімі</p>
+        <p>Жарнамалар тізімі</p>
     </a>
 </li>
 
@@ -9,7 +9,7 @@
 <li class="nav-item">
     <a href="{{ route('specialities.index') }}"
        class="nav-link {{ Request::is('specialities*') ? 'active' : '' }}">
-        <p>Мамандықтар тізімі</p>
+        <p>Өткізу саласы тізімі</p>
     </a>
 </li>
 
@@ -17,7 +17,7 @@
 <li class="nav-item">
     <a href="{{ route('tutors.index') }}"
        class="nav-link {{ Request::is('tutors*') ? 'active' : '' }}">
-        <p>Кураторлар тізімі</p>
+        <p>Жауаптылар тізімі</p>
     </a>
 </li>
 
@@ -25,13 +25,13 @@
 <li class="nav-item">
     <a href="{{ route('groups.index') }}"
        class="nav-link {{ Request::is('groups*') ? 'active' : '' }}">
-        <p>Группа</p>
+        <p>Жарнама түрлері</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="{{ route('students.index') }}"
        class="nav-link {{ Request::is('students*') ? 'active' : '' }}">
-        <p>Студенттер тізімі</p>
+        <p>Тапсырыстар тізімі</p>
     </a>
 </li>

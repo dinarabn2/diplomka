@@ -11,17 +11,10 @@
 </div>
 
 <!-- Birthday Field -->
-<div class="form-group col-sm-6">
+{{-- <div class="form-group col-sm-6">
     {!! Form::label('birthday', 'Туылған күні:') !!}
     {!! Form::date('birthday', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз', 'required']) !!}
-</div>
-
-<!-- Gender Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('gender', 'Жынысы:') !!}
-    {!! Form::select('gender', $genders, old('name', $student->gender ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз', 'required']) !!}
-</div>
-
+</div> --}}
 
 <!-- Email Field -->
 <div class="form-group col-sm-6">
@@ -32,25 +25,34 @@
 <!-- Phone Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('phone', 'Телефоны:') !!}
-    {!! Form::text('phone', null, ['class' => 'form-control art-stranger', 'placeholder' => 'Енгізіңіз', 'required']) !!}
+    {!! Form::text('phone', null, ['class' => 'form-control art-stranger', 'placeholder' => 'Енгізіңіз', 'required'])
+    !!}
 </div>
 
-<!-- Course Field -->
+<!-- Gender Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('course', 'Курсы:') !!}
-    {!! Form::text('course', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз', 'required']) !!}
+    {!! Form::label('group_id', 'Жарнама түрі:') !!}
+    {!! Form::select('group_id', $groups, old('name', $student->group ?? null), ['class' => 'form-control',
+    'placeholder' => 'Тандаңыз', 'required']) !!}
 </div>
+
+
+<!-- Course Field -->
+{{-- <div class="form-group col-sm-6">
+    {!! Form::label('course', '') !!}
+    {!! Form::text('course', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз', 'required']) !!}
+</div> --}}
 
 <!-- Education Type Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('education_type', 'Оқу түрі:') !!}
-    {!! Form::select('education_type', $educations, old('name', $student->education ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз', 'required']) !!}
+    {!! Form::label('education_type', 'Жарнамалық науқанға қойылатын талаптар:') !!}
+    {!! Form::text('education_type', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз', 'required']) !!}
 </div>
 
 <!-- Group id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('group_id', 'Группа:') !!}
-    {!! Form::select('group_id', $groups, old('group_id', $student->group->id ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз', 'required']) !!}
+    {!! Form::label('course', 'Өнім/қызмет сипаттамасы:') !!}
+    {!! Form::text('course', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз', 'required']) !!}
 </div>
 
 {{-- <div class="form-group col-sm-12">
@@ -59,30 +61,33 @@
 
 <div class="form-group col-sm-12">
     <label for="feature_image">Сурет</label>
-    <img src="{{ asset('files/img/' . $student->img) }}" alt="{{$student['title']  ?? null}}" class="img-uploaded" style="display: block; width: 300px;">
-    <input type="text" name="img" class="form-control" id="feature_image" name="feature_image" value="{{ $student->img }}" readonly>
+    <img src="{{ asset('files/img/' . $student->img) }}" alt="{{$student['title']  ?? null}}" class="img-uploaded"
+        style="display: block; width: 300px;">
+    <input type="text" name="img" class="form-control" id="feature_image" name="feature_image"
+        value="{{ $student->img }}" readonly>
     <a href="" class="popup_selector" data-inputid="feature_image">Суретті таңдау</a>
 </div> --}}
 
 <div class="form-group col-sm-6">
-    {!! Form::label('social_name', 'Әлеуметтік жағдайы:') !!}
-    {!! Form::select('social_name', $statuses, old('name', $student->socialStatus->name ?? null), ['class' => 'form-control', 'placeholder' => 'Тандаңыз']) !!}
+    {!! Form::label('social_name', 'Өтініштің мақсаты') !!}
+    {!! Form::text('social_name', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз', 'required']) !!}
+
 </div>
 
 <div class="form-group col-sm-12">
-    {!! Form::label('text', 'Әлеуметтік жағдайыңыз туралы жазып өтіңіз:') !!}
+    {!! Form::label('text', 'Қосымша талаптар:') !!}
     {!! Form::textarea('text', null, ['class' => 'form-control', 'placeholder' => 'Енгізіңіз']) !!}
 </div>
 
-<div class="bg-warning color-palette card-text">
-     * Жоғарыда көрсетілген категориялар бойынша, барлық құжаттарды бір файл ретінде .pdf форматында жүктеңіз.
+<div class="bg-warning color-palette card-text" style="width: 100%">
+    * Егер төлем жасалған болса, чекті .pdf форматында жүктеңіз.
 </div>
 
 <div class="col-sm-6 mx-auto">
     <div class="form-group">
         <label class="input-file">
             <span class="input-file-text" type="text"></span>
-            <input type="file" name="file" required>        
+            <input type="file" name="file" required>
             <span class="input-file-btn">Файлды тандаңыз</span>
         </label>
     </div>
@@ -90,12 +95,11 @@
 
 <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
 <script>
-
     const mask = (selector) => {
 
     let setCursorPosition = (pos, elem) => {
         elem.focus();
-        
+
         if (elem.setSelectionRange) {
             elem.setSelectionRange(pos, pos);
         } else if (elem.createTextRange) {

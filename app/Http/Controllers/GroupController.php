@@ -47,17 +47,17 @@ class GroupController extends AppBaseController
             case !empty($request->faculty):
                 $groups = Group::whereHas('faculty', function ($query) use ($request) {
                     $query->where('id', $request->faculty);
-                })->paginate(config('settings.groups.paginate')); 
-                break;   
+                })->paginate(config('settings.groups.paginate'));
+                break;
             case !empty($request->speciality):
                 $groups = Group::whereHas('speciality', function ($query) use ($request) {
                     $query->where('id', $request->speciality);
-                })->paginate(config('settings.groups.paginate')); 
-                break;   
+                })->paginate(config('settings.groups.paginate'));
+                break;
             default:
                 $groups = Group::orderBy('name')->paginate(config('settings.groups.paginate'));
         }
-        
+
         $faculties = $this->facultyRepository->makeModel()->pluck('name', 'id');
         $specialities = $this->specialityRepository->makeModel()->pluck('name', 'id');
 
@@ -91,7 +91,7 @@ class GroupController extends AppBaseController
 
         $group = $this->groupRepository->create($input);
 
-        Flash::success('Топ сәтті сақталды.');
+        Flash::success('Жарнама сәтті сақталды.');
 
         return redirect(route('groups.index'));
     }
@@ -108,7 +108,7 @@ class GroupController extends AppBaseController
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
-            Flash::error('Топ табылмады');
+            Flash::error('Жарнама табылмады');
 
             return redirect(route('groups.index'));
         }
@@ -131,7 +131,7 @@ class GroupController extends AppBaseController
         $specialities = $this->specialityRepository->makeModel()->pluck('name', 'id');
 
         if (empty($group)) {
-            Flash::error('Топ табылмады');
+            Flash::error('Жарнама табылмады');
 
             return redirect(route('groups.index'));
         }
@@ -152,14 +152,14 @@ class GroupController extends AppBaseController
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
-            Flash::error('Топ табылмады');
+            Flash::error('Жарнама табылмады');
 
             return redirect(route('groups.index'));
         }
 
         $group = $this->groupRepository->update($request->all(), $id);
 
-        Flash::success('Топ сәтті жаңартылды.');
+        Flash::success('Жарнама сәтті жаңартылды.');
 
         return redirect(route('groups.index'));
     }
@@ -178,14 +178,14 @@ class GroupController extends AppBaseController
         $group = $this->groupRepository->find($id);
 
         if (empty($group)) {
-            Flash::error('Топ табылмады');
+            Flash::error('Жарнама табылмады');
 
             return redirect(route('groups.index'));
         }
 
         $this->groupRepository->delete($id);
 
-        Flash::success('Топ сәтті жойылды.');
+        Flash::success('Жарнама сәтті жойылды.');
 
         return redirect(route('groups.index'));
     }

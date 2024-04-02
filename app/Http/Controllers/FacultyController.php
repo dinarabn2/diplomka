@@ -59,7 +59,7 @@ class FacultyController extends AppBaseController
 
         $faculty = $this->facultyRepository->create($input);
 
-        Flash::success('Факультет сәтті құтқарылды.');
+        Flash::success('Жарнама сәтті құтқарылды.');
 
         return redirect(route('faculties.index'));
     }
@@ -76,7 +76,7 @@ class FacultyController extends AppBaseController
         $faculty = $this->facultyRepository->find($id);
 
         if (empty($faculty)) {
-            Flash::error('Факультет табылмады');
+            Flash::error('Жарнама табылмады');
 
             return redirect(route('faculties.index'));
         }
@@ -96,7 +96,7 @@ class FacultyController extends AppBaseController
         $faculty = $this->facultyRepository->find($id);
 
         if (empty($faculty)) {
-            Flash::error('Факультет табылмады');
+            Flash::error('Жарнама табылмады');
 
             return redirect(route('faculties.index'));
         }
@@ -117,14 +117,14 @@ class FacultyController extends AppBaseController
         $faculty = $this->facultyRepository->find($id);
 
         if (empty($faculty)) {
-            Flash::error('Факультет табылмады');
+            Flash::error('Жарнама табылмады');
 
             return redirect(route('faculties.index'));
         }
 
         $faculty = $this->facultyRepository->update($request->all(), $id);
 
-        Flash::success('Факультет сәтті жаңартылды.');
+        Flash::success('Жарнама сәтті жаңартылды.');
 
         return redirect(route('faculties.index'));
     }
@@ -143,14 +143,14 @@ class FacultyController extends AppBaseController
         $faculty = $this->facultyRepository->find($id);
 
         if (empty($faculty)) {
-            Flash::error('Факультет табылмады');
+            Flash::error('Жарнама табылмады');
 
             return redirect(route('faculties.index'));
         }
 
         $this->facultyRepository->delete($id);
 
-        Flash::success('Факультет сәтті жойылды.');
+        Flash::success('Жарнама сәтті жойылды.');
 
         return redirect(route('faculties.index'));
     }

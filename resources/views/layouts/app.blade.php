@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Әлеуметтік қолдау</title>
+    <title>ART MEDIA COMPANY</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Font Awesome -->
@@ -131,7 +131,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
         integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
         crossorigin="anonymous"></script>
-        
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.3/bootstrapSwitch.min.js"
         integrity="sha512-DAc/LqVY2liDbikmJwUS1MSE3pIH0DFprKHZKPcJC7e3TtAOzT55gEMTleegwyuIWgCfOPOM8eLbbvFaG9F/cA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -165,7 +165,7 @@
             url: '/elfinder/tinymce5',
             /**
              * On message will be triggered by the child window
-             * 
+             *
              * @param dialogApi
              * @param details
              * @see https://www.tiny.cloud/docs/ui-components/urldialog/#configurationoptions
@@ -173,25 +173,25 @@
             onMessage: function (dialogApi, details) {
                 if (details.mceAction === 'fileSelected') {
                     const file = details.data.file;
-                    
+
                     // Make file info
                     const info = file.name;
-                    
+
                     // Provide file and text for the link dialog
                     if (meta.filetype === 'file') {
                         callback(file.url, {text: info, title: info});
                     }
-                    
+
                     // Provide image and alt text for the image dialog
                     if (meta.filetype === 'image') {
                         callback(file.url, {alt: info});
                     }
-                    
+
                     // Provide alternative source and posted for the media dialog
                     if (meta.filetype === 'media') {
                         callback(file.url);
                     }
-                    
+
                     dialogApi.close();
                 }
             }

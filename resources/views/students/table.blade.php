@@ -15,11 +15,9 @@
                 <th style="width: 70px;">№</th>
                 <th>Тегі</th>
                 <th>Аты</th>
-                <th>Туылған күні</th>
-                <th>Жынысы</th>
-                <th>Курсы</th>
-                <th>Оқу түрі</th>
+                <th>Жарнама түрлері</th>
                 <th>Телефоны</th>
+                <th>Почтасы</th>
                 <th colspan="3">Өзгерту</th>
             </tr>
             </thead>
@@ -29,11 +27,9 @@
                     <td>{{ $student->id }}</td>
                     <td>{{ $student->surname }}</td>
                     <td>{{ $student->name }}</td>
-                    <td>{{ $student->birthday }}</td>
-                    <td>@if ($student->gender && $gender) {{ $gender[$student->gender] }} @else 'Not data' @endif</td>
                     <td>{{ $student->course }}</td>
-                    <td>{{ $education[$student->education_type] ?? '' }}</td>
                     <td>{{ $student->phone }}</td>
+                    <td>{{ $student->email }}</td>
                     <td width="120">
                         {!! Form::open(['route' => ['students.destroy', $student->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

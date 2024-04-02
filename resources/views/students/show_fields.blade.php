@@ -68,94 +68,22 @@
                         {!! Form::label('surname', 'Тегі:') !!}
                         <p>{{ $student->surname }}</p>
                     </div>
-            
+
                     <!-- Name Field -->
                     <div class="col-sm-12">
                         {!! Form::label('name', 'Аты:') !!}
                         <p>{{ $student->name }}</p>
                     </div>
 
-                    <!-- Gender Field -->
-                    <div class="col-sm-12">
-                        {!! Form::label('gender', 'Жынысы:') !!}
-                        <p>@if ($student->gender && $gender) {{ $gender[$student->gender] }} @else 'Not data' @endif</p>
-                    </div>
-
-                    <!-- Birthday Field -->
-                    <div class="col-sm-12">
-                        {!! Form::label('birthday', 'Туылған күні:') !!}
-                        <p>{{ $student->birthday }}</p>
-                    </div>
-            
                     <!-- Phone Field -->
                     <div class="col-sm-12">
                         {!! Form::label('phone', 'Телефоны:') !!}
                         <p>{{ $student->phone }}</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-5">
-        <div class="card p-20">
-            <h4>Оқу:</h4>
-            <br>
-            <!-- Course Field -->
-            <div class="col-sm-12">
-                {!! Form::label('course', 'Курсы:') !!}
-                <p>{{ $student->course }}</p>
-            </div>
 
-            <!-- Education Type Field -->
-            <div class="col-sm-12">
-                {!! Form::label('education_type', 'Оқу түрі:') !!}
-                <p>{{ $education[$student->education_type] }}</p>
-            </div>
-
-            <div class="col-sm-12">
-                {!! Form::label('faculty_id', 'Факультет:') !!}
-                <p>{{ $student->group->faculty->name }}</p>
-            </div>
-
-            <div class="col-sm-12">
-                {!! Form::label('speciality_id', 'Мамандық:') !!}
-                <p>{{ $student->group->speciality->name }}</p>
-            </div>
-
-            <div class="col-sm-12">
-                {!! Form::label('tutor_id', 'Куратор:') !!}
-                <p>{{ $student->group->tutor->name }}</p>
-            </div>  
-        </div>
-    </div>
-    <div class="col-md-7">
-        <div class="card p-20">
-            <h4>Өтініш:</h4>
-            <br>
-            <div class="container">
-                <div class="@if (Route::currentRouteName() == 'pdf.preview') section @endif">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div>Мұхтар Әуезов атындағы ОҚУ ректоры</div>
-                            <div>Қожамжарова Дария Пернешқызына</div>
-                            <div>{{ $student->group->name }} тобынан</div>
-                            <div>{{ $student->surname }} {{ $student->name }}</div>
-                        </div>
-                        <div class="panel-title">Өтініш</div>
-                        <div class="panel-body">
-                            <div class="main-div">
-                                Мен, <span>{{ $student->surname }} {{ $student->name }}</span> {{ $student->group->name }} тобынан, 
-                                әлеуметтік жағдайыма байланысты <span>{{  $student->socialStatus->name }}</span> болғандықтан, оқу ақысына жеңілдік беруіңізді сұранамын.
-                            </div>
-                            <br>
-                            <div class="panel-btm">Аты-жөні: <span>{{ $student->surname }} {{ $student->name }}</span></div>
-                        </div>
-                        <div class="text-center pdf-btn">
-                          {{-- <a href="{{ route('pdf.generate')}}" class="btn btn-primary">Өтінішті жүктеп алу</a> --}}
-                          @if (Route::currentRouteName() == 'pdf.preview')
-                            <a href="{{ route('thanks')}}" class="btn btn-primary">Келесі</a>
-                          @endif
-                        </div>
+                    <div class="col-sm-12">
+                        {!! Form::label('email', 'Почта:') !!}
+                        <p>{{ $student->email }}</p>
                     </div>
                 </div>
             </div>
@@ -163,16 +91,45 @@
     </div>
     <div class="col-md-5">
         <div class="card p-20">
-            <h4>Әлеуметтік жағдайы:</h4>
+            <h4>Жарнама туралы:</h4>
             <br>
+            <!-- Course Field -->
             <div class="col-sm-12">
-                {!! Form::label('text', 'Әлеуметтік жағдай категориясы:') !!}
-                <p>{{ $student->socialStatus->name ?? ''}}</p>
+                {!! Form::label('course', 'Өнім/қызмет сипаттамасы:') !!}
+                <p>{{ $student->course }}</p>
             </div>
+
             <div class="col-sm-12">
-                {!! Form::label('text', 'Жағдайы:') !!}
+                {!! Form::label('faculty_id', 'Жарнама:') !!}
+                <p>{{ $student->group->faculty->name }}</p>
+            </div>
+
+            <div class="col-sm-12">
+                {!! Form::label('speciality_id', 'Өткізу саласы:') !!}
+                <p>{{ $student->group->speciality->name }}</p>
+            </div>
+
+            <div class="col-sm-12">
+                {!! Form::label('tutor_id', 'Жауаптылар:') !!}
+                <p>{{ $student->group->tutor->name }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="card p-20">
+            <h4>Қосымша талаптар:</h4>
+            <br>
+            <div class="container">
+                {!! Form::label('text', 'Өтініштің мақсаты:') !!}
+                <div>{{ $student->social_name }}</div>
                 <p>{{ $student->text }}</p>
             </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card p-20">
+            <h4>Төлем:</h4>
+            <br>
             <div class="col-sm-12">
                 {!! Form::label('file', 'Файл:') !!}
                 @if($student->socialStatus)

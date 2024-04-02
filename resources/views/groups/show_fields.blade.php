@@ -5,17 +5,17 @@
 </div>
 
 <div class="col-sm-12">
-    {!! Form::label('tutor_id', 'Куратор:') !!}
+    {!! Form::label('tutor_id', 'Жауаптылар:') !!}
     <p>{{ $group->tutor->name }}</p>
 </div>
 
 <div class="col-sm-12">
-    {!! Form::label('faculty_id', 'Факультет:') !!}
+    {!! Form::label('faculty_id', 'Жарнама:') !!}
     <p>{{ $group->faculty->name ?? null }}</p>
 </div>
 
 <div class="col-sm-12">
-    {!! Form::label('speciality_id', 'Мамандық:') !!}
+    {!! Form::label('speciality_id', 'Өткізу саласы:') !!}
     <p>{{ $group->speciality->name ?? null }}</p>
 </div>
 

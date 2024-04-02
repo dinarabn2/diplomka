@@ -13,7 +13,7 @@
         <tr>
             <th style="width: 70px;">№</th>
             <th>Аты</th>
-            <th>Факультет</th>
+            <th>Жарнама</th>
             <th>Шифр</th>
             <th colspan="3">Өзгерту</th>
         </tr>

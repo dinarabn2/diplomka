@@ -95,13 +95,13 @@
 <body class="hold-transition">
 <div class="register-page">
     <div class="register-box">
-        <img class="promo-img" src="https://smart.ukgu.kz/images/logo4.png" alt="">
-    
+        <div class="promo-title">ART MEDIA COMPANY</div>
+
         <div class="card">
             <div class="card-body register-card-body">
                 <form method="post" action="{{ route('register') }}">
                     @csrf
-    
+
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -117,7 +117,7 @@
                         <span class="error invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
-    
+
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -133,7 +133,7 @@
                         <span class="error invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
-    
+
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -148,7 +148,7 @@
                         <span class="error invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
-    
+
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <div class="input-group-text"><span class="fas fa-lock"></span></div>
@@ -158,17 +158,17 @@
                                class="form-control"
                                placeholder="Парольді қайталаңыз">
                     </div>
-    
+
                     <button type="submit" class="btn btn-primary btn-block">Регистрация</button>
 
                     </div>
                 </form>
-    
+
                 <a class="login-text" href="{{ route('login') }}" class="text-center">Аккаунттыңыз бар ма?</a>
             </div>
             <!-- /.form-box -->
         </div><!-- /.card -->
-    
+
         <!-- /.form-box -->
     </div>
 </div>

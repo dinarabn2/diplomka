@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Группалар</h1>
+                    <h1>Жарнама түрлері</h1>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
@@ -21,17 +21,17 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-lg-3">
                         <div class="form-group">
-                            <input class=" form-control" placeholder="Топтың аты" title="Топ" name="name" type="text">
+                            <input class=" form-control" placeholder="Жарнаманың аты" title="Жарнама" name="name" type="text">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-lg-3">
                         <div class="form-group">
-                            {!! Form::select('faculty', $faculties, null, ['class' => 'form-control', 'placeholder' => 'Факультетті тандаңыз']) !!}
+                            {!! Form::select('faculty', $faculties, null, ['class' => 'form-control', 'placeholder' => 'Жарнаманы тандаңыз']) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-lg-3">
                         <div class="form-group">
-                            {!! Form::select('speciality', $specialities, null, ['class' => 'form-control', 'placeholder' => 'Мамандықты тандаңыз']) !!}
+                            {!! Form::select('speciality', $specialities, null, ['class' => 'form-control', 'placeholder' => 'Өткізу саласын тандаңыз']) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-lg-2 ">
@@ -57,7 +57,7 @@
 
                 <div class="card-footer clearfix">
                     <div class="float-right">
-                        
+
                     </div>
                 </div>
             </div>

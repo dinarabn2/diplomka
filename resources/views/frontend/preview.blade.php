@@ -2,7 +2,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="shortcut icon" href="https://rnd.evrika.com/storage/photos/shares/644d077191a0c.png" type="image/png">
-    <title>Өтініш | Әлеуметтік қолдау</title>
+    <title>Өтініш</title>
 </head>
 <style type="text/css">
     h2{
@@ -48,7 +48,7 @@
         font-size: 16px;
         font-weight: 500;
     }
-</style>    
+</style>
 <body>
     <div class="container">
         <div class="@if (Route::currentRouteName() == 'pdf.preview') section @endif">
@@ -62,7 +62,7 @@
                 <div class="panel-title">Өтініш</div>
                 <div class="panel-body">
                     <div class="main-div">
-                        Мен, <span>{{cache('surname')}} {{cache('name')}}</span> ИП-19-3к1 тобынан, 
+                        Мен, <span>{{cache('surname')}} {{cache('name')}}</span> ИП-19-3к1 тобынан,
                         әлеуметтік жағдайыма байланысты <span>көпбалалы отбасынан</span> болғандықтан, оқу ақысына жеңілдік беруіңізді сұранамын.
                     </div>
                     <br>

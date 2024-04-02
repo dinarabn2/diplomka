@@ -14,9 +14,9 @@
             <tr>
                 <th style="width: 70px;">№</th>
                 <th style="width: 125px;">Аты</th>
-                <th>Факультет</th>
-                <th>Мамандық</th>
-                <th>Куратор</th>
+                <th>Жарнама</th>
+                <th>Өткізу саласы</th>
+                <th>Жауаптылар</th>
                 <th colspan="3">Өзгерту</th>
             </tr>
             </thead>

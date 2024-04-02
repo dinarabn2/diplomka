@@ -18,7 +18,7 @@ class SpecialityController extends AppBaseController
     private $specialityRepository;
 
     /**
-     * 
+     *
      * @var FacultyRepository $facultyRepository
      */
     private $facultyRepository;
@@ -69,7 +69,7 @@ class SpecialityController extends AppBaseController
 
         $speciality = $this->specialityRepository->create($input);
 
-        Flash::success('Мамандық сәтті сақталды.');
+        Flash::success('Өткізу саласы сәтті сақталды.');
 
         return redirect(route('specialities.index'));
     }
@@ -86,7 +86,7 @@ class SpecialityController extends AppBaseController
         $speciality = $this->specialityRepository->find($id);
 
         if (empty($speciality)) {
-            Flash::error('Мамандық табылмады');
+            Flash::error('Өткізу саласы табылмады');
 
             return redirect(route('specialities.index'));
         }
@@ -107,7 +107,7 @@ class SpecialityController extends AppBaseController
         $faculties = $this->facultyRepository->makeModel()->pluck('name', 'id');
 
         if (empty($speciality)) {
-            Flash::error('Мамандық табылмады');
+            Flash::error('Өткізу саласы табылмады');
 
             return redirect(route('specialities.index'));
         }
@@ -128,14 +128,14 @@ class SpecialityController extends AppBaseController
         $speciality = $this->specialityRepository->find($id);
 
         if (empty($speciality)) {
-            Flash::error('Мамандық табылмады');
+            Flash::error('Өткізу саласы табылмады');
 
             return redirect(route('specialities.index'));
         }
 
         $speciality = $this->specialityRepository->update($request->all(), $id);
 
-        Flash::success('Мамандық сәтті жаңартылды.');
+        Flash::success('Өткізу саласы сәтті жаңартылды.');
 
         return redirect(route('specialities.index'));
     }
@@ -154,14 +154,14 @@ class SpecialityController extends AppBaseController
         $speciality = $this->specialityRepository->find($id);
 
         if (empty($speciality)) {
-            Flash::error('Мамандық табылмады');
+            Flash::error('Өткізу саласы табылмады');
 
             return redirect(route('specialities.index'));
         }
 
         $this->specialityRepository->delete($id);
 
-        Flash::success('Мамандық сәтті жойылды.');
+        Flash::success('Өткізу саласы сәтті жойылды.');
 
         return redirect(route('specialities.index'));
     }
